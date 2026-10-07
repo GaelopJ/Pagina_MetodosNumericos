@@ -10,7 +10,7 @@ def metodoDePuntoFijo(funcion_usuario,punto_inicial,tolerancia,max_iteraciones):
     x_anterior = punto_inicial
 
     while iteracion <= max_iteraciones:
-        x_nuevo = funcion.subs(x, x_anterior).evalf()
+        x_nuevo = float(funcion.subs(x, x_anterior).evalf())
         if x_nuevo != 0:
             error = abs((x_nuevo - x_anterior) / x_nuevo) * 100 
         else:

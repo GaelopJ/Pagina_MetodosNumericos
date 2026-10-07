@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Numérica Pro</title>
+    <!-- Fuentes modernas -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;800&display=swap" rel="stylesheet">
+    <!-- Tu archivo CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Barra de Navegación -->
+    <nav class="navbar">
+        <div class="logo">Num.Calc()</div>
+        <div class="nav-links">
+            <a href="#inicio">Inicio</a>
+            <div class="dropdown">
+                <span>Ejercicios Realizados ▾</span>
+                <div class="dropdown-content">
+                    <a href="#calculadora">Método de Bisección</a>
+                    <a href="#calculadora">Método de Punto Fijo</a>
+                </div>
+            </div>
+            <a href="#calculadora">Calculadora</a>
+        </div>
+        <div class="socials">
+            <a href="#">GH</a>
+            <a href="#">IG</a>
+            <a href="#">IN</a>
+        </div>
+    </nav>
+
+    <!-- Sección Hero (Misión, Visión, Objetivo) -->
+    <section id="inicio" class="hero section-padding">
+        <h1 class="hero-title">Algoritmos<br><span class="accent">Matemáticos</span></h1>
+        
+        <div class="acordeones-container">
+            <details class="acordeon">
+                <summary>Nuestra Visión</summary>
+                <p>Acercar la complejidad de los métodos numéricos a estudiantes mediante interfaces modernas, interactivas y sin fricciones técnicas.</p>
+            </details>
+            <details class="acordeon">
+                <summary>Nuestra Misión</summary>
+                <p>Proveer herramientas de cálculo exacto basadas en SymPy, eliminando la barrera del código para que el usuario se enfoque en el análisis matemático.</p>
+            </details>
+            <details class="acordeon">
+                <summary>El Objetivo</summary>
+                <p>Construir la calculadora web más rápida e intuitiva para estudiantes de ingeniería de la Facultad.</p>
+            </details>
+        </div>
+    </section>
+
+    <!-- Sección Calculadora -->
+    <section id="calculadora" class="calc-section section-padding">
+        <div class="glass-card">
+            <h2>Calculadora de Métodos</h2>
+            
+            <!-- Selector de método -->
+            <div class="input-group">
+                <label>Selecciona el Método:</label>
+                <select id="selector-metodo">
+                    <option value="biseccion">Método de Bisección</option>
+                    <option value="punto_fijo">Método de Punto Fijo</option>
+                </select>
+            </div>
+
+            <!-- Inputs Dinámicos -->
+            <div class="input-group">
+                <label>Función matemática:</label>
+                <input type="text" id="funcion" value="x**3 - x - 2" placeholder="ej. x**2 - 4">
+            </div>
+
+            <!-- Grupo Bisección -->
+            <div id="inputs-biseccion" class="grid-2">
+                <div class="input-group">
+                    <label>Límite inferior (a):</label>
+                    <input type="number" id="a" value="1">
+                </div>
+                <div class="input-group">
+                    <label>Límite superior (b):</label>
+                    <input type="number" id="b" value="2">
+                </div>
+            </div>
+
+            <!-- Grupo Punto Fijo (Oculto por defecto) -->
+            <div id="inputs-punto-fijo" class="grid-2" style="display: none;">
+                <div class="input-group">
+                    <label>Punto Inicial (x0):</label>
+                    <input type="number" id="x0" value="0">
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="input-group">
+                    <label>Tolerancia:</label>
+                    <input type="number" id="tol" value="0.001" step="0.0001">
+                </div>
+                <div class="input-group">
+                    <label>Iteraciones máximas:</label>
+                    <input type="number" id="max_it" value="50">
+                </div>
+            </div>
+
+            <button id="btn-calcular" class="btn-glow">Ejecutar Cálculo</button>
+        </div>
+
+        <!-- Resultados -->
+        <div class="resultados-container">
+            <h3 id="texto-raiz" class="accent"></h3>
+            <div class="table-wrapper">
+                <table id="tabla-resultados">
+                    <thead id="cabecera-tabla"></thead>
+                    <tbody id="cuerpo-tabla"></tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Desarrollado en la Facultad de Estudios Superiores Aragón</p>
+        <p class="colaboradores">
+            <strong>Ingeniería y Diseño:</strong> Johan Gael Rodríguez Carrillo<br>
+            <strong>Colaboradores:</strong> Farid Jared Espíndola Cabello | Gabriel Aníbal Macias Paredes | Favio Orlando Quezada Moctezuma | David Santibañez Pimentel
+        </p>
+    </footer>
+
+    <!-- Librerías de Animación -->
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Tu archivo JS -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

@@ -4,8 +4,8 @@ def metodoDeBiseccion(funcion_usuario,limite_inferior,limite_superior,tolerancia
 
     x = sp.Symbol('x')
     funcion = sp.sympify(funcion_usuario)
-    funcion_evaluada_inferior = funcion.subs(x, limite_inferior).evalf()
-    funcion_evaluada_superior = funcion.subs(x, limite_superior).evalf()
+    funcion_evaluada_inferior = float(funcion.subs(x, limite_inferior).evalf())
+    funcion_evaluada_superior = float(funcion.subs(x, limite_superior).evalf())
 
     if funcion_evaluada_inferior * funcion_evaluada_superior > 0:
         return None ,"No se puede aplicar el método de bisección. La función no cambia de signo en el intervalo dado."
@@ -24,7 +24,7 @@ def metodoDeBiseccion(funcion_usuario,limite_inferior,limite_superior,tolerancia
 
         while iteracion <= max_iteraciones:
             c = (limite_inferior + limite_superior) / 2
-            funcion_evaluada_c = funcion.subs(x, c).evalf()
+            funcion_evaluada_c = float(funcion.subs(x, c).evalf())
             if iteracion > 1:
                 if c != 0:
                     error = abs((c - c_anterior) / c) * 100 
