@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify, render_template
 from biseccion import metodoDeBiseccion 
 from puntoFijo import metodoDePuntoFijo
+from newton_raphson import metodoDeNewtonRaphson
 
 # Inicializamos el servidor
 app = Flask(__name__)
@@ -67,6 +68,30 @@ def api_punto_fijo():
         "historial": historial
     }
     
+    return jsonify(respuesta)
+
+    # Ruta para el método de Newton-Raphson
+@app.route('/api/newton_raphson', methods=['POST'])
+def api_newton_raphson():
+    datos = request.json
+
+    funcion_usuario = datos['funcion']
+    punto_inicial = float(datos['x0'])
+    tolerancia = float(datos['tol'])
+    max_iteraciones = int(datos['max_it'])
+
+    raiz, historial = metodoDeNewtonRaphson(
+        funcion_usuario, 
+        punto_inicial, 
+        tolerancia, 
+        max_iteraciones
+    )
+
+    respuesta = {
+        "raiz": raiz,
+        "historial": historial
+    }
+
     return jsonify(respuesta)
 
 # Enciende el servidor

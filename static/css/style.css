@@ -1,126 +1,108 @@
-:root {
-    --bg-color: #050505;
-    --card-bg: rgba(255, 255, 255, 0.03);
-    --text-main: #ffffff;
-    --text-muted: #a1a1aa;
-    --accent: #3b82f6; /* Azul eléctrico */
-    --accent-glow: rgba(59, 130, 246, 0.5);
-}
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        /* Corregido el asterisco inicial */
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none !important; }
+        :root { --bg-color: #f8f9fa; --text-dark: #111111; --accent: #d3d3d3; }
 
-body {
-    font-family: 'Inter', sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-main);
-    overflow-x: hidden;
-}
+        /* Capa 0: Fondo base */
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: var(--bg-color); /* El color vuelve al body */
+            color: var(--text-dark); 
+            overflow-x: hidden; 
+            -webkit-font-smoothing: antialiased; 
+        }
 
-.accent { color: var(--accent); }
+        /* Capa 1: Canvas Animado (Números positivos evitan bugs de renderizado) */
+        #math-canvas { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100vw; 
+            height: 100vh; 
+            z-index: 1; 
+            opacity: 0.8; 
+            pointer-events: none; 
+        }
 
-/* --- NAVBAR GLASSMORPHISM --- */
-.navbar {
-    position: fixed;
-    top: 0; width: 100%;
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 20px 5%;
-    background: rgba(5, 5, 5, 0.7);
-    backdrop-filter: blur(12px);
-    z-index: 1000;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
+        /* Cursor */
+        .custom-cursor { position: fixed; top: 0; left: 0; width: 20px; height: 20px; background-color: var(--text-dark); border-radius: 50%; pointer-events: none; mix-blend-mode: difference; z-index: 9999; transform: translate(-50%, -50%); will-change: transform; transition: width 0.3s, height 0.3s; }
+        
+        /* Capa 10: Título principal garantizado al frente */
+        .hero { 
+            height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            padding: 0 5vw; 
+            position: relative; 
+            z-index: 10; 
+            pointer-events: none; 
+        }
+        .hero * { pointer-events: auto; }
+        .hero-title { 
+            font-family: 'Work Sans', sans-serif; 
+            font-size: clamp(3rem, 10vw, 8rem); 
+            font-weight: 400; 
+            text-transform: uppercase; 
+            line-height: 1; 
+            letter-spacing: -2px; 
+            position: relative; 
+            z-index: 10; 
+            /* EFECTO HALO: Crea un escudo crema alrededor de las letras para tapar la gráfica */
+            text-shadow: 
+                3px 3px 0 var(--bg-color),
+                4px 4px 0 var(--bg-color);
+        }
+        .line-wrap { overflow: hidden; padding-bottom: 10px; }
+        .line { display: block; position: relative; z-index: 10; }
 
-.logo { font-weight: 800; font-size: 1.2rem; letter-spacing: -1px;}
-.nav-links { display: flex; gap: 30px; }
-.nav-links a { color: var(--text-main); text-decoration: none; font-size: 0.9rem; transition: color 0.3s;}
-.nav-links a:hover { color: var(--accent); }
-.socials a { color: var(--text-muted); text-decoration: none; margin-left: 15px; font-size: 0.9rem;}
+        /* Capa 10: Botón Magnético */
+        .magnetic-wrap { margin-top: 50px; display: inline-block; position: relative; z-index: 10; }
+        .magnetic-btn { 
+            background-color: var(--bg-color); /* Fondo sólido en lugar de transparente */
+            color: var(--text-dark); 
+            border: 1px solid var(--text-dark); 
+            border-radius: 50px; 
+            padding: 20px 50px; 
+            font-size: 1.1rem; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            position: relative; 
+            display: inline-flex; 
+            align-items: center; 
+            justify-content: center; 
+            transition: background 0.3s ease, color 0.3s ease; 
+        }
+        .magnetic-btn:hover { background: var(--text-dark); color: var(--bg-color); }
+        .btn-text { pointer-events: none; display: inline-block; }
 
-/* Dropdown */
-.dropdown { position: relative; cursor: pointer; font-size: 0.9rem;}
-.dropdown-content {
-    display: none; position: absolute; top: 100%; left: 0;
-    background: #111; padding: 10px; border-radius: 8px;
-    min-width: 200px; border: 1px solid rgba(255,255,255,0.1);
-}
-.dropdown:hover .dropdown-content { display: flex; flex-direction: column; }
-.dropdown-content a { padding: 8px; }
+        /* Capa 20: Scroll Horizontal y Paneles (Actúan como un muro sobre el canvas) */
+        .horizontal-section { height: 100vh; overflow: hidden; background-color: var(--bg-color); position: relative; z-index: 20; }
+        .horizontal-container { display: flex; height: 100%; width: 300vw; }
+        .panel { width: 100vw; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 0 5vw; border-right: 1px solid rgba(0,0,0,0.1); position: relative; }
+        .panel-number { font-family: 'Work Sans', sans-serif; font-size: 15vw; color: rgba(0,0,0,0.03); position: absolute; z-index: 0; font-weight: 600; top: 10%; }
+        .panel h2 { font-family: 'Work Sans', sans-serif; font-size: 3rem; margin-bottom: 10px; z-index: 1; font-weight: 400; }
 
-/* --- HERO SECTION --- */
-.section-padding { padding: 120px 5% 60px 5%; min-height: 100vh;}
-.hero-title { font-size: clamp(3rem, 8vw, 6rem); font-weight: 800; line-height: 1; letter-spacing: -2px; margin-bottom: 50px;}
+        /* Formularios de Calculadora */
+        .calc-form { display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 350px; z-index: 2; margin-bottom: 15px;}
+        .input-row { display: flex; gap: 10px; }
+        .calc-input { background: transparent; border: none; border-bottom: 1px solid rgba(0,0,0,0.2); padding: 10px 5px; font-family: 'Inter'; font-size: 1rem; color: var(--text-dark); outline: none; transition: border-color 0.3s; width: 100%; }
+        .calc-input:focus { border-bottom: 1px solid var(--text-dark); }
+        .calc-btn { background: var(--text-dark); color: var(--bg-color); border: none; padding: 12px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-top: 10px; transition: opacity 0.3s; }
+        .calc-btn:hover { opacity: 0.8; }
+        .result-box { z-index: 2; font-weight: 600; color: #333; min-height: 25px; margin-bottom: 10px;}
+        .table-container { z-index: 2; width: 100%; max-width: 800px; max-height: 30vh; overflow-y: auto; border: 1px solid rgba(0,0,0,0.1); }
+        table { width: 100%; border-collapse: collapse; font-size: 0.85rem; text-align: center; }
+        th, td { padding: 10px; border-bottom: 1px solid rgba(0,0,0,0.05); }
+        th { background: rgba(0,0,0,0.03); position: sticky; top: 0; font-weight: 600; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px;}
 
-/* Acordeones */
-.acordeon {
-    background: var(--card-bg);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 12px;
-    margin-bottom: 15px;
-    overflow: hidden;
-    transition: all 0.3s ease;
-}
-/* Contenedor de Misión/Visión */
-.acordeones-container {
-    max-width: 800px;
-    margin-top: 40px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    position: relative;
-    z-index: 10; /* Protege el texto para que la luz de fondo no lo tape */
-}
-.acordeon summary {
-    padding: 20px; font-weight: 500; cursor: pointer; list-style: none;
-    outline: none; font-size: 1.2rem;
-}
-.acordeon summary:hover { background: rgba(255, 255, 255, 0.05); color: var(--accent);}
-.acordeon p { padding: 0 20px 20px 20px; color: var(--text-muted); line-height: 1.6;}
-
-/* --- CALCULADORA --- */
-.glass-card {
-    background: var(--card-bg);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    padding: 40px;
-    max-width: 800px;
-    margin: 0 auto;
-    backdrop-filter: blur(10px);
-}
-
-.glass-card h2 { margin-bottom: 30px; font-size: 2rem; font-weight: 500;}
-
-.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.input-group { margin-bottom: 20px; display: flex; flex-direction: column; }
-.input-group label { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px;}
-.input-group input, .input-group select {
-    background: rgba(0, 0, 0, 0.5); border: 1px solid rgba(255,255,255,0.2);
-    color: white; padding: 15px; border-radius: 8px; font-family: 'Inter'; font-size: 1rem;
-    transition: border-color 0.3s;
-}
-.input-group input:focus, .input-group select:focus { border-color: var(--accent); outline: none; }
-
-.btn-glow {
-    width: 100%; padding: 15px; margin-top: 10px;
-    background: var(--accent); color: white;
-    border: none; border-radius: 8px; font-size: 1rem; font-weight: 800;
-    cursor: pointer; transition: all 0.3s;
-    box-shadow: 0 0 20px var(--accent-glow);
-}
-.btn-glow:hover { transform: translateY(-2px); box-shadow: 0 0 30px var(--accent); }
-
-/* --- TABLA RESULTADOS --- */
-.resultados-container { margin-top: 50px; max-width: 1000px; margin-inline: auto;}
-.table-wrapper { overflow-x: auto; margin-top: 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);}
-table { width: 100%; border-collapse: collapse; background: var(--card-bg); }
-th, td { padding: 15px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.9rem;}
-th { background: rgba(0,0,0,0.5); color: var(--accent); font-weight: 500;}
-tr:hover { background: rgba(255,255,255,0.02); }
-
-/* --- FOOTER --- */
-footer { text-align: center; padding: 60px 20px; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 100px;}
-footer p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 10px;}
-.colaboradores { font-size: 0.8rem; color: #555; }
+        /* Capa 20: Footer Reveal */
+        .footer-reveal-section { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 10vw; background-color: var(--text-dark); color: var(--bg-color); position: relative; z-index: 20;}
+        .footer-content { width: 100%; height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; overflow: hidden; position: relative; clip-path: inset(100% 0 0 0); }
+        .footer-content-inner { transform: scale(1.1); transform-origin: center center; display: flex; flex-direction: column; gap: 40px; }
+        .footer-content-inner h2 { font-family: 'Work Sans', sans-serif; font-size: 3rem; font-weight: 400; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; }
+        .colaboradores { font-size: 1rem; line-height: 1.8; color: #999; }
+        .socials { display: flex; gap: 30px; justify-content: center; margin-top: 20px; }
+        .socials a { color: var(--bg-color); text-decoration: none; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; position: relative; }
+        .socials a::after { content: ''; position: absolute; width: 100%; transform: scaleX(0); height: 1px; bottom: -5px; left: 0; background-color: var(--bg-color); transform-origin: bottom right; transition: transform 0.25s ease-out; }
+        .socials a:hover::after { transform: scaleX(1); transform-origin: bottom left; }
