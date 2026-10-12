@@ -1,108 +1,107 @@
+/* ==========================================
+   RESETEO Y VARIABLES GLOBALES
+   ========================================== */
+* { margin: 0; padding: 0; box-sizing: border-box; cursor: none !important; }
+:root { --bg-color: #f8f9fa; --text-dark: #111111; --accent: #d3d3d3; }
 
-        /* Corregido el asterisco inicial */
-        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none !important; }
-        :root { --bg-color: #f8f9fa; --text-dark: #111111; --accent: #d3d3d3; }
+body { 
+    font-family: 'Inter', sans-serif; 
+    background-color: var(--bg-color); 
+    color: var(--text-dark); 
+    overflow-x: hidden; 
+    -webkit-font-smoothing: antialiased; 
+}
 
-        /* Capa 0: Fondo base */
-        body { 
-            font-family: 'Inter', sans-serif; 
-            background-color: var(--bg-color); /* El color vuelve al body */
-            color: var(--text-dark); 
-            overflow-x: hidden; 
-            -webkit-font-smoothing: antialiased; 
-        }
+/* ==========================================
+   CURSOR PERSONALIZADO (Global)
+   ========================================== */
+.custom-cursor { 
+    width: 20px; 
+    height: 20px; 
+    border: none; 
+    border-radius: 50%; 
+    position: fixed; 
+    pointer-events: none; 
+    z-index: 9999; 
+    transition: width 0.2s, height 0.2s; 
+    background-color: #fff; 
+    mix-blend-mode: difference; 
+    left: 0; 
+    top: 0; 
+}
+.custom-cursor.active { 
+    width: 40px; 
+    height: 40px; 
+    background-color: #fff; 
+}
 
-        /* Capa 1: Canvas Animado (Números positivos evitan bugs de renderizado) */
-        #math-canvas { 
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            width: 100vw; 
-            height: 100vh; 
-            z-index: 1; 
-            opacity: 0.8; 
-            pointer-events: none; 
-        }
+/* ==========================================
+   ESTILOS DE INDEX.HTML (Página Principal)
+   ========================================== */
+#math-canvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 1; opacity: 0.8; pointer-events: none; }
 
-        /* Cursor */
-        .custom-cursor { position: fixed; top: 0; left: 0; width: 20px; height: 20px; background-color: var(--text-dark); border-radius: 50%; pointer-events: none; mix-blend-mode: difference; z-index: 9999; transform: translate(-50%, -50%); will-change: transform; transition: width 0.3s, height 0.3s; }
-        
-        /* Capa 10: Título principal garantizado al frente */
-        .hero { 
-            height: 100vh; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center; 
-            padding: 0 5vw; 
-            position: relative; 
-            z-index: 10; 
-            pointer-events: none; 
-        }
-        .hero * { pointer-events: auto; }
-        .hero-title { 
-            font-family: 'Work Sans', sans-serif; 
-            font-size: clamp(3rem, 10vw, 8rem); 
-            font-weight: 400; 
-            text-transform: uppercase; 
-            line-height: 1; 
-            letter-spacing: -2px; 
-            position: relative; 
-            z-index: 10; 
-            /* EFECTO HALO: Crea un escudo crema alrededor de las letras para tapar la gráfica */
-            text-shadow: 
-                3px 3px 0 var(--bg-color),
-                4px 4px 0 var(--bg-color);
-        }
-        .line-wrap { overflow: hidden; padding-bottom: 10px; }
-        .line { display: block; position: relative; z-index: 10; }
+.hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 0 5vw; position: relative; z-index: 10; pointer-events: none; }
+.hero * { pointer-events: auto; }
+.hero-title { font-family: 'Work Sans', sans-serif; font-size: clamp(3rem, 10vw, 8rem); font-weight: 400; text-transform: uppercase; line-height: 1; letter-spacing: -2px; position: relative; z-index: 10; text-shadow: 3px 3px 0 var(--bg-color), 4px 4px 0 var(--bg-color); }
+.line-wrap { overflow: hidden; padding-bottom: 10px; }
+.line { display: block; position: relative; z-index: 10; }
 
-        /* Capa 10: Botón Magnético */
-        .magnetic-wrap { margin-top: 50px; display: inline-block; position: relative; z-index: 10; }
-        .magnetic-btn { 
-            background-color: var(--bg-color); /* Fondo sólido en lugar de transparente */
-            color: var(--text-dark); 
-            border: 1px solid var(--text-dark); 
-            border-radius: 50px; 
-            padding: 20px 50px; 
-            font-size: 1.1rem; 
-            text-transform: uppercase; 
-            letter-spacing: 2px; 
-            position: relative; 
-            display: inline-flex; 
-            align-items: center; 
-            justify-content: center; 
-            transition: background 0.3s ease, color 0.3s ease; 
-        }
-        .magnetic-btn:hover { background: var(--text-dark); color: var(--bg-color); }
-        .btn-text { pointer-events: none; display: inline-block; }
+.magnetic-wrap { margin-top: 50px; display: inline-block; position: relative; z-index: 10; }
+.magnetic-btn { background-color: var(--bg-color); color: var(--text-dark); border: 1px solid var(--text-dark); border-radius: 50px; padding: 20px 50px; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 2px; position: relative; display: inline-flex; align-items: center; justify-content: center; transition: background 0.3s ease, color 0.3s ease; }
+.magnetic-btn:hover { background: var(--text-dark); color: var(--bg-color); }
+.btn-text { pointer-events: none; display: inline-block; }
 
-        /* Capa 20: Scroll Horizontal y Paneles (Actúan como un muro sobre el canvas) */
-        .horizontal-section { height: 100vh; overflow: hidden; background-color: var(--bg-color); position: relative; z-index: 20; }
-        .horizontal-container { display: flex; height: 100%; width: 300vw; }
-        .panel { width: 100vw; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 0 5vw; border-right: 1px solid rgba(0,0,0,0.1); position: relative; }
-        .panel-number { font-family: 'Work Sans', sans-serif; font-size: 15vw; color: rgba(0,0,0,0.03); position: absolute; z-index: 0; font-weight: 600; top: 10%; }
-        .panel h2 { font-family: 'Work Sans', sans-serif; font-size: 3rem; margin-bottom: 10px; z-index: 1; font-weight: 400; }
+.floating-menu { position: fixed; right: 2vw; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 15px; z-index: 100; background-color: rgba(248, 249, 250, 0.8); backdrop-filter: blur(5px); padding: 20px; border-radius: 8px; border: 1px solid rgba(0,0,0,0.05); }
+.menu-title { font-family: 'Work Sans', sans-serif; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: #888; margin-bottom: 10px; }
+.menu-link { font-family: 'Inter', sans-serif; font-size: 0.85rem; color: var(--text-dark); text-decoration: none; transition: opacity 0.3s; position: relative; }
+.menu-link:hover { opacity: 0.5; }
+.menu-link::before { content: ''; position: absolute; left: -15px; top: 50%; transform: translateY(-50%) scale(0); width: 6px; height: 6px; background-color: var(--text-dark); border-radius: 50%; transition: transform 0.2s; }
+.menu-link:hover::before { transform: translateY(-50%) scale(1); }
 
-        /* Formularios de Calculadora */
-        .calc-form { display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 350px; z-index: 2; margin-bottom: 15px;}
-        .input-row { display: flex; gap: 10px; }
-        .calc-input { background: transparent; border: none; border-bottom: 1px solid rgba(0,0,0,0.2); padding: 10px 5px; font-family: 'Inter'; font-size: 1rem; color: var(--text-dark); outline: none; transition: border-color 0.3s; width: 100%; }
-        .calc-input:focus { border-bottom: 1px solid var(--text-dark); }
-        .calc-btn { background: var(--text-dark); color: var(--bg-color); border: none; padding: 12px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-top: 10px; transition: opacity 0.3s; }
-        .calc-btn:hover { opacity: 0.8; }
-        .result-box { z-index: 2; font-weight: 600; color: #333; min-height: 25px; margin-bottom: 10px;}
-        .table-container { z-index: 2; width: 100%; max-width: 800px; max-height: 30vh; overflow-y: auto; border: 1px solid rgba(0,0,0,0.1); }
-        table { width: 100%; border-collapse: collapse; font-size: 0.85rem; text-align: center; }
-        th, td { padding: 10px; border-bottom: 1px solid rgba(0,0,0,0.05); }
-        th { background: rgba(0,0,0,0.03); position: sticky; top: 0; font-weight: 600; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px;}
+.about-section { background-color: transparent; position: relative; z-index: 15; padding: 10vh 10vw; display: flex; flex-direction: column; gap: 60vh; }
+.about-block { max-width: 800px; width: 100%; position: relative; z-index: 5; min-height: 50vh; display: flex; flex-direction: column; justify-content: center; }
+.about-block.left { align-self: flex-start; text-align: left; }
+.about-block.right { align-self: flex-end; text-align: right; }
+.about-block.center { align-self: center; text-align: center; }
+.about-subtitle { font-family: 'Work Sans', sans-serif; font-size: 1.5rem; font-weight: 600; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 25px; color: #888; }
+.about-text { font-family: 'Inter', sans-serif; font-size: clamp(1.5rem, 3vw, 2.5rem); line-height: 1.4; color: var(--text-dark); font-weight: 300; }
+.transition-title { font-family: 'Work Sans', sans-serif; font-size: clamp(4rem, 8vw, 8rem); font-weight: 300; text-transform: uppercase; letter-spacing: -3px; line-height: 0.9; color: var(--text-dark); }
 
-        /* Capa 20: Footer Reveal */
-        .footer-reveal-section { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 10vw; background-color: var(--text-dark); color: var(--bg-color); position: relative; z-index: 20;}
-        .footer-content { width: 100%; height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; overflow: hidden; position: relative; clip-path: inset(100% 0 0 0); }
-        .footer-content-inner { transform: scale(1.1); transform-origin: center center; display: flex; flex-direction: column; gap: 40px; }
-        .footer-content-inner h2 { font-family: 'Work Sans', sans-serif; font-size: 3rem; font-weight: 400; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; }
-        .colaboradores { font-size: 1rem; line-height: 1.8; color: #999; }
-        .socials { display: flex; gap: 30px; justify-content: center; margin-top: 20px; }
-        .socials a { color: var(--bg-color); text-decoration: none; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; position: relative; }
-        .socials a::after { content: ''; position: absolute; width: 100%; transform: scaleX(0); height: 1px; bottom: -5px; left: 0; background-color: var(--bg-color); transform-origin: bottom right; transition: transform 0.25s ease-out; }
-        .socials a:hover::after { transform: scaleX(1); transform-origin: bottom left; }
+.horizontal-section { height: 100vh; overflow: hidden; background-color: var(--bg-color); position: relative; z-index: 20; }
+.horizontal-container { display: flex; height: 100%; width: 400vw; }
+.panel { width: 100vw; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 0 5vw; border-right: 1px solid rgba(0,0,0,0.1); position: relative; }
+.panel-number { font-family: 'Work Sans', sans-serif; font-size: 15vw; color: rgba(0,0,0,0.03); position: absolute; z-index: 0; font-weight: 600; top: 10%; }
+.panel h2 { font-family: 'Work Sans', sans-serif; font-size: 3rem; margin-bottom: 10px; z-index: 1; font-weight: 400; }
+
+.calc-form { display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 350px; z-index: 2; margin-bottom: 15px;}
+.input-row { display: flex; gap: 10px; }
+.calc-input { background: transparent; border: none; border-bottom: 1px solid rgba(0,0,0,0.2); padding: 10px 5px; font-family: 'Inter'; font-size: 1rem; color: var(--text-dark); outline: none; transition: border-color 0.3s; width: 100%; }
+.calc-input:focus { border-bottom: 1px solid var(--text-dark); }
+.calc-btn { background: var(--text-dark); color: var(--bg-color); border: none; padding: 12px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-top: 10px; transition: opacity 0.3s; }
+.calc-btn:hover { opacity: 0.8; }
+.result-box { z-index: 2; font-weight: 600; color: #333; min-height: 25px; margin-bottom: 10px;}
+.table-container { z-index: 2; width: 100%; max-width: 800px; max-height: 30vh; overflow-y: auto; border: 1px solid rgba(0,0,0,0.1); }
+table { width: 100%; border-collapse: collapse; font-size: 0.85rem; text-align: center; }
+th, td { padding: 10px; border-bottom: 1px solid rgba(0,0,0,0.05); }
+th { background: rgba(0,0,0,0.03); position: sticky; top: 0; font-weight: 600; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px;}
+
+.footer-reveal-section { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 10vw; background-color: var(--text-dark); color: var(--bg-color); position: relative; z-index: 20;}
+.footer-content { width: 100%; height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; overflow: hidden; position: relative; clip-path: inset(100% 0 0 0); }
+.footer-content-inner { transform: scale(1.1); transform-origin: center center; display: flex; flex-direction: column; gap: 40px; }
+.footer-content-inner h2 { font-family: 'Work Sans', sans-serif; font-size: 3rem; font-weight: 400; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; }
+.colaboradores { font-size: 1rem; line-height: 1.8; color: #999; }
+.socials { display: flex; gap: 30px; justify-content: center; margin-top: 20px; }
+.socials a { color: var(--bg-color); text-decoration: none; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; position: relative; }
+.socials a::after { content: ''; position: absolute; width: 100%; transform: scaleX(0); height: 1px; bottom: -5px; left: 0; background-color: var(--bg-color); transform-origin: bottom right; transition: transform 0.25s ease-out; }
+.socials a:hover::after { transform: scaleX(1); transform-origin: bottom left; }
+
+/* ==========================================
+   ESTILOS DE EJERCICIOS.HTML
+   ========================================== */
+.ejercicios-container { padding: 15vh 10vw; min-height: 100vh; }
+.btn-regresar { display: inline-block !important; height: 30px !important; padding: 0 0 5px 0 !important; margin: 0 0 40px 0 !important; line-height: 30px !important; vertical-align: middle !important; font-family: 'Work Sans', sans-serif !important; text-decoration: none !important; color: var(--text-dark, #000) !important; font-weight: 600 !important; text-transform: uppercase !important; letter-spacing: 2px !important; border-bottom: 2px solid var(--text-dark, #000) !important; transition: opacity 0.3s !important; position: relative !important; z-index: 50 !important; cursor: pointer !important; }
+.btn-regresar:hover { opacity: 0.5 !important; }
+.metodo-titulo { font-family: 'Work Sans', sans-serif; font-size: 4rem; text-transform: uppercase; letter-spacing: -2px; margin-bottom: 60px; }
+.ejercicio-bloque { margin-bottom: 80px; border-left: 2px solid var(--text-dark); padding-left: 30px; }
+.ejercicio-titulo { font-family: 'Work Sans', sans-serif; font-size: 1.5rem; color: #888; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px; }
+.ejercicio-contenido { font-family: 'Inter', sans-serif; font-size: 1.2rem; line-height: 1.6; }

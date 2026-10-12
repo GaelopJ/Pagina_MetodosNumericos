@@ -94,6 +94,14 @@ def api_newton_raphson():
 
     return jsonify(respuesta)
 
+@app.route('/ejercicios')
+def ejercicios():
+    # Obtenemos qué método quiere ver el usuario de la URL (ej. ?metodo=secante)
+    metodo_seleccionado = request.args.get('metodo', 'punto_fijo') # Por defecto muestra Punto Fijo
+    
+    # Renderizamos la nueva plantilla pasándole el método
+    return render_template('ejercicios.html', metodo=metodo_seleccionado)
+
 # Enciende el servidor
 if __name__ == '__main__':
     app.run(debug=True)

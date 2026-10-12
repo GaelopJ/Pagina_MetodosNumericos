@@ -9,279 +9,149 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Work+Sans:wght@400;600&display=swap" rel="stylesheet">
     
+    <!-- CONEXIÓN AL ARCHIVO CSS EXTERNO -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
+    <nav class="floating-menu">
+        <span class="menu-title">EJERCICIOS RESUELTOS</span>
+        <a href="{{ url_for('ejercicios', metodo='punto_fijo') }}" class="menu-link interactable">Punto Fijo</a>
+        <a href="{{ url_for('ejercicios', metodo='newton_raphson') }}" class="menu-link interactable">Newton-Raphson</a>
+        <a href="{{ url_for('ejercicios', metodo='secante') }}" class="menu-link interactable">Secante</a>
+        <a href="{{ url_for('ejercicios', metodo='biseccion') }}" class="menu-link interactable">Bisección</a>
+    </nav>
 
-    <!-- Canvas de Fondo Animado -->
     <canvas id="math-canvas"></canvas>
-
     <div class="custom-cursor"></div>
 
-    <!-- Sección 1: Hero -->
     <section class="hero">
         <h1 class="hero-title">
             <div class="line-wrap"><span class="line">Algoritmos</span></div>
             <div class="line-wrap"><span class="line">Numéricos</span></div>
         </h1>
         <div class="magnetic-wrap">
-            <button class="magnetic-btn">
+            <button class="magnetic-btn interactable">
                 <span class="btn-text">Descubrir Motor</span>
             </button>
         </div>
     </section>
 
-    <!-- Sección 2: Calculadoras (Scroll Horizontal) -->
+    <section class="about-section">
+        <div class="about-block left interactable">
+            <h2 class="about-subtitle">Visión</h2>
+            <p class="about-text">Convertir la complejidad matemática en una experiencia visualmente intuitiva, creando un estándar moderno para las herramientas de cálculo en la ingeniería.</p>
+        </div>
+        <div class="about-block right interactable">
+            <h2 class="about-subtitle">Misión</h2>
+            <p class="about-text">Desarrollar un motor numérico robusto y de alta precisión, envuelto en un diseño minimalista que optimice el flujo de trabajo y el análisis de algoritmos.</p>
+        </div>
+        <div class="about-block left interactable">
+            <h2 class="about-subtitle">Objetivo</h2>
+            <p class="about-text">Construir una plataforma integral que fusione la potencia del backend computacional con animaciones de vanguardia, facilitando la resolución en tiempo real.</p>
+        </div>
+        <div class="about-block center interactable">
+            <h2 class="transition-title">Métodos<br>Numéricos</h2>
+        </div>
+    </section>
+
     <section class="horizontal-section">
         <div class="horizontal-container">
             
-            <div class="panel">
-                <div class="panel-number">01</div>
-                <h2>Bisección</h2>
-                <div class="calc-form">
-                    <input type="text" id="fun-bis" class="calc-input interactable" value="x**3 - x - 2">
-                    <div class="input-row">
-                        <input type="number" id="a-bis" class="calc-input interactable" value="1" placeholder="a">
-                        <input type="number" id="b-bis" class="calc-input interactable" value="2" placeholder="b">
-                    </div>
-                    <button class="calc-btn interactable" onclick="ejecutar('biseccion')">Calcular Raíz</button>
-                </div>
-                <div id="res-bis" class="result-box"></div>
-                <div class="table-container"><table id="tab-bis"></table></div>
-            </div>
-
-            <div class="panel">
-                <div class="panel-number">02</div>
+            <!-- PANEL 1: PUNTO FIJO -->
+            <div class="panel" id="punto-fijo">
+                <span class="panel-number">01</span>
                 <h2>Punto Fijo</h2>
-                <div class="calc-form">
-                    <input type="text" id="fun-pf" class="calc-input interactable" value="exp(-x)">
-                    <input type="number" id="x0-pf" class="calc-input interactable" value="0" placeholder="Punto inicial x0">
-                    <button class="calc-btn interactable" onclick="ejecutar('punto_fijo')">Calcular Raíz</button>
-                </div>
+                <form class="calc-form" onsubmit="event.preventDefault(); ejecutar('punto_fijo')">
+                    <div class="input-row"><input type="text" class="calc-input interactable" id="fun-pf" placeholder="Función g(x) despejada" required></div>
+                    <div class="input-row"><input type="number" step="any" class="calc-input interactable" id="x0-pf" placeholder="Valor inicial (x0)" required></div>
+                    <div class="input-row">
+                        <input type="number" step="any" class="calc-input interactable" id="tol-pf" placeholder="Tolerancia (ej. 0.0001)" required>
+                        <input type="number" class="calc-input interactable" id="iter-pf" placeholder="Iteraciones Max." required>
+                    </div>
+                    <button type="submit" class="calc-btn interactable">Calcular</button>
+                </form>
                 <div id="res-pf" class="result-box"></div>
                 <div class="table-container"><table id="tab-pf"></table></div>
             </div>
-
-            <div class="panel">
-                <div class="panel-number">03</div>
+            
+            <!-- PANEL 2: NEWTON-RAPHSON -->
+            <div class="panel" id="newton-raphson">
+                <span class="panel-number">02</span>
                 <h2>Newton-Raphson</h2>
-                <div class="calc-form">
-                    <input type="text" id="fun-nr" class="calc-input interactable" value="x**2 - 4">
-                    <input type="number" id="x0-nr" class="calc-input interactable" value="5" placeholder="Punto inicial x0">
-                    <button class="calc-btn interactable" onclick="ejecutar('newton_raphson')">Calcular Raíz</button>
-                </div>
+                <form class="calc-form" onsubmit="event.preventDefault(); ejecutar('newton_raphson')">
+                    <div class="input-row">
+                        <input type="text" class="calc-input interactable" id="fun-nr" placeholder="Función f(x)" required>
+                        <!-- Si tu backend calcula la derivada solo, este campo es ilustrativo -->
+                        <input type="text" class="calc-input interactable" id="df-nr" placeholder="Derivada f'(x)">
+                    </div>
+                    <div class="input-row"><input type="number" step="any" class="calc-input interactable" id="x0-nr" placeholder="Valor inicial (x0)" required></div>
+                    <div class="input-row">
+                        <input type="number" step="any" class="calc-input interactable" id="tol-nr" placeholder="Tolerancia" required>
+                        <input type="number" class="calc-input interactable" id="iter-nr" placeholder="Iteraciones Max." required>
+                    </div>
+                    <button type="submit" class="calc-btn interactable">Calcular</button>
+                </form>
                 <div id="res-nr" class="result-box"></div>
                 <div class="table-container"><table id="tab-nr"></table></div>
+            </div>
+
+            <!-- PANEL 3: SECANTE -->
+            <div class="panel" id="secante">
+                <span class="panel-number">03</span>
+                <h2>Secante</h2>
+                <form class="calc-form" onsubmit="event.preventDefault(); ejecutar('secante')">
+                    <div class="input-row"><input type="text" class="calc-input interactable" id="fun-sec" placeholder="Función f(x)" required></div>
+                    <div class="input-row">
+                        <input type="number" step="any" class="calc-input interactable" id="x0-sec" placeholder="Punto inicial (x0)" required>
+                        <input type="number" step="any" class="calc-input interactable" id="x1-sec" placeholder="Punto inicial (x1)" required>
+                    </div>
+                    <div class="input-row">
+                        <input type="number" step="any" class="calc-input interactable" id="tol-sec" placeholder="Tolerancia" required>
+                        <input type="number" class="calc-input interactable" id="iter-sec" placeholder="Iteraciones Max." required>
+                    </div>
+                    <button type="submit" class="calc-btn interactable">Calcular</button>
+                </form>
+                <div id="res-sec" class="result-box"></div>
+                <div class="table-container"><table id="tab-sec"></table></div>
+            </div>
+
+            <!-- PANEL 4: BISECCIÓN -->
+            <div class="panel" id="biseccion">
+                <span class="panel-number">04</span>
+                <h2>Bisección</h2>
+                <form class="calc-form" onsubmit="event.preventDefault(); ejecutar('biseccion')">
+                    <div class="input-row"><input type="text" class="calc-input interactable" id="fun-bis" placeholder="Función f(x)" required></div>
+                    <div class="input-row">
+                        <input type="number" step="any" class="calc-input interactable" id="a-bis" placeholder="Límite inferior [a]" required>
+                        <input type="number" step="any" class="calc-input interactable" id="b-bis" placeholder="Límite superior [b]" required>
+                    </div>
+                    <div class="input-row">
+                        <input type="number" step="any" class="calc-input interactable" id="tol-bis" placeholder="Tolerancia" required>
+                        <input type="number" class="calc-input interactable" id="iter-bis" placeholder="Iteraciones Max." required>
+                    </div>
+                    <button type="submit" class="calc-btn interactable">Calcular</button>
+                </form>
+                <div id="res-bis" class="result-box"></div>
+                <div class="table-container"><table id="tab-bis"></table></div>
             </div>
 
         </div>
     </section>
 
-    <!-- Sección 3: Footer Reveal -->
     <section class="footer-reveal-section">
         <div class="footer-content">
             <div class="footer-content-inner">
                 <div>
                     <h2>Equipo de Ingeniería</h2>
-                    <p class="colaboradores">
-                        <strong>Líder de Proyecto:</strong> Johan Gael Rodríguez Carrillo<br>
-                        <strong>Colaboradores:</strong> Farid Jared Espíndola | Gabriel Aníbal Macias | Favio Orlando Quezada | David Santibañez
-                    </p>
-                </div>
-                <div>
-                    <h2>Conectar</h2>
-                    <div class="socials">
-                        <a href="#" class="social-link interactable">Github</a>
-                        <a href="#" class="social-link interactable">LinkedIn</a>
-                        <a href="#" class="social-link interactable">Instagram</a>
-                    </div>
+                    <p class="colaboradores"><strong>Líder de Proyecto:</strong> Johan Gael Rodríguez Carrillo<br></p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- CONEXIÓN A LOS SCRIPTS EXTERNOS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script>
-        gsap.registerPlugin(ScrollTrigger);
-
-        /* ==========================================
-           0. ANIMACIÓN DEL PLANO CARTESIANO (CANVAS)
-           ========================================== */
-        const canvas = document.getElementById('math-canvas');
-        const ctx = canvas.getContext('2d');
-
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
-
-        let time = 0;
-        let drawProgress = 0;
-
-        const config = {
-            gridSize: 50,
-            gridColor: 'rgba(0, 0, 0, 0.05)', 
-            axisColor: 'rgba(0, 0, 0, 0.15)', 
-            curveColor: 'rgba(0, 0, 0, 0.8)', 
-            curveWidth: 2,
-            speed: 0.02, 
-            amplitude: 150, 
-            frequency: 0.01 
-        };
-
-        function drawMathBackground() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height); 
-            const centerX = canvas.width / 2;
-            const centerY = canvas.height / 2;
-
-            ctx.beginPath();
-            ctx.strokeStyle = config.gridColor;
-            ctx.lineWidth = 1;
-            for (let x = 0; x <= canvas.width; x += config.gridSize) {
-                ctx.moveTo(x, 0); ctx.lineTo(x, canvas.height);
-            }
-            for (let y = 0; y <= canvas.height; y += config.gridSize) {
-                ctx.moveTo(0, y); ctx.lineTo(canvas.width, y);
-            }
-            ctx.stroke();
-
-            ctx.beginPath();
-            ctx.strokeStyle = config.axisColor;
-            ctx.lineWidth = 1.5;
-            ctx.moveTo(0, centerY); ctx.lineTo(canvas.width, centerY); 
-            ctx.moveTo(centerX, 0); ctx.lineTo(centerX, canvas.height); 
-            ctx.stroke();
-
-            ctx.beginPath();
-            ctx.strokeStyle = config.curveColor;
-            ctx.lineWidth = config.curveWidth;
-            
-            if (drawProgress < canvas.width) {
-                drawProgress += 15;
-            }
-
-            for (let x = 0; x < drawProgress; x++) {
-                let y = centerY - (Math.sin((x - centerX) * config.frequency + time) * config.amplitude);
-                if (x === 0) ctx.moveTo(x, y);
-                else ctx.lineTo(x, y);
-            }
-            ctx.stroke();
-
-            time += config.speed;
-            requestAnimationFrame(drawMathBackground);
-        }
-        drawMathBackground();
-
-        /* ==========================================
-           1. CURSOR Y ANIMACIONES (GSAP)
-           ========================================== */
-        const cursor = document.querySelector('.custom-cursor');
-        gsap.set(cursor, { xPercent: -50, yPercent: -50 });
-
-        window.addEventListener('mousemove', (e) => {
-            gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0.15, ease: "power2.out" });
-        });
-
-        document.querySelectorAll('.interactable').forEach(el => {
-            el.addEventListener('mouseenter', () => gsap.to(cursor, { scale: 2.5, backgroundColor: 'transparent', border: '1px solid var(--text-dark)' }));
-            el.addEventListener('mouseleave', () => gsap.to(cursor, { scale: 1, backgroundColor: 'var(--text-dark)', border: 'none' }));
-        });
-
-        gsap.from(".hero-title .line", { y: "100%", opacity: 0, duration: 1.2, stagger: 0.15, ease: "power4.out", delay: 0.2 });
-        gsap.from(".magnetic-wrap", { y: 30, opacity: 0, duration: 1, ease: "power3.out", delay: 0.8 });
-
-        const btn = document.querySelector('.magnetic-btn');
-        const btnText = document.querySelector('.btn-text');
-        btn.addEventListener('mousemove', (e) => {
-            const rect = btn.getBoundingClientRect();
-            const x = (e.clientX - (rect.left + rect.width / 2)) * 0.4;
-            const y = (e.clientY - (rect.top + rect.height / 2)) * 0.4;
-            gsap.to(btn, { x: x, y: y, duration: 0.3, ease: "power2.out" });
-            gsap.to(btnText, { x: x * 0.5, y: y * 0.5, duration: 0.3 });
-        });
-        btn.addEventListener('mouseleave', () => {
-            gsap.to([btn, btnText], { x: 0, y: 0, duration: 0.7, ease: "elastic.out(1, 0.3)" });
-        });
-
-        /* ==========================================
-           2. SCROLL HORIZONTAL (LOS PANELES)
-           ========================================== */
-        const hContainer = document.querySelector('.horizontal-container');
-        gsap.to(hContainer, {
-            x: () => -(hContainer.scrollWidth - window.innerWidth),
-            ease: "none",
-            scrollTrigger: {
-                trigger: '.horizontal-section',
-                start: "top top", 
-                end: () => `+=${hContainer.scrollWidth}`,
-                pin: true, 
-                scrub: 1, 
-                invalidateOnRefresh: true 
-            }
-        });
-
-        /* ==========================================
-           3. FOOTER REVEAL
-           ========================================== */
-        const tl = gsap.timeline({ scrollTrigger: { trigger: ".footer-reveal-section", start: "top 60%", end: "bottom bottom", scrub: 1 }});
-        tl.to('.footer-content', { clipPath: "inset(0% 0 0 0)", duration: 1.5, ease: "power3.inOut" }, 0); 
-        tl.to('.footer-content-inner', { scale: 1, duration: 1.5, ease: "power3.inOut" }, 0);
-
-
-        /* ==========================================
-           4. CONEXIÓN A FLASK (API MATEMÁTICA)
-           ========================================== */
-        async function ejecutar(metodo) {
-            let url = `/api/${metodo}`;
-            let datos = { tol: 0.001, max_it: 50 }; 
-            let sufijo = metodo === 'biseccion' ? 'bis' : (metodo === 'punto_fijo' ? 'pf' : 'nr');
-
-            try {
-                datos.funcion = document.getElementById(`fun-${sufijo}`).value;
-                if(metodo === 'biseccion') {
-                    datos.a = document.getElementById(`a-${sufijo}`).value;
-                    datos.b = document.getElementById(`b-${sufijo}`).value;
-                } else {
-                    datos.x0 = document.getElementById(`x0-${sufijo}`).value;
-                }
-
-                const btnActual = event.target;
-                btnActual.innerText = "Calculando...";
-
-                const peticion = await fetch(url, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(datos)
-                });
-                const respuesta = await peticion.json();
-                
-                btnActual.innerText = "Calcular Raíz";
-                
-                document.getElementById(`res-${sufijo}`).innerText = `Raíz: ${respuesta.raiz}`;
-                
-                const tabla = document.getElementById(`tab-${sufijo}`);
-                tabla.innerHTML = ""; 
-
-                if (respuesta.historial.length > 0) {
-                    let thead = "<thead><tr>";
-                    let llaves = Object.keys(respuesta.historial[0]); 
-                    for (let k of llaves) thead += `<th>${k}</th>`;
-                    thead += "</tr></thead><tbody>";
-                    
-                    for (let paso of respuesta.historial) {
-                        thead += "<tr>";
-                        for (let k of llaves) thead += `<td>${paso[k]}</td>`;
-                        thead += "</tr>";
-                    }
-                    tabla.innerHTML = thead + "</tbody>";
-                }
-            } catch (error) {
-                alert("Error matemático. Revisa tu función.");
-            }
-        }
-    </script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 </html>

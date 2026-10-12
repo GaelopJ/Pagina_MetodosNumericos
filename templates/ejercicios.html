@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios | Métodos Numéricos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Work+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- CONEXIÓN AL MISMO ARCHIVO CSS EXTERNO -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+    <!-- MathJax (Único script en el head) -->
+    <script>
+        MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <div class="custom-cursor"></div>
+
+    <div class="ejercicios-container">
+        
+        <a href="{{ url_for('inicio') }}" class="btn-regresar interactable">← Volver al motor</a>
+        
+        {% if metodo == 'punto_fijo' %}
+            <h1 class="metodo-titulo">Punto Fijo</h1>
+            <div class="ejercicio-bloque interactable">
+                <h3 class="ejercicio-titulo">Ejercicio 1</h3>
+                <div class="ejercicio-contenido">
+                    <p>Encontrar la raíz de la función:</p>
+                    <p>$$ f(x) = x^2 - 2x - 3 $$</p>
+                    <p><strong>Paso 1 (Despeje):</strong> Despejamos $x$ para obtener $g(x)$.</p>
+                    <p>$$ x = \sqrt{2x + 3} \quad \text{o} \quad g(x) = \sqrt{2x + 3} $$</p>
+                    <p><strong>Datos iniciales:</strong> $x_0 = 4$, Tolerancia = $0.001$</p>
+                    <p><strong>Solución esperada:</strong> Raíz en $x = 3$.</p>
+                </div>
+            </div>
+
+        {% elif metodo == 'newton_raphson' %}
+            <h1 class="metodo-titulo">Newton-Raphson</h1>
+            <div class="ejercicio-bloque interactable">
+                <h3 class="ejercicio-titulo">Ejercicio 1</h3>
+                <div class="ejercicio-contenido">
+                    <p>Encontrar la raíz de la función:</p>
+                    <p>$$ f(x) = e^x - x - 2 $$</p>
+                    <p><strong>Derivada:</strong></p>
+                    <p>$$ f'(x) = e^x - 1 $$</p>
+                </div>
+            </div>
+
+        {% elif metodo == 'secante' %}
+            <!-- Aquí tu contenido de secante -->
+
+        {% elif metodo == 'biseccion' %}
+            <!-- Aquí tu contenido de bisección -->
+
+        {% endif %}
+    </div>
+
+    <!-- CONEXIÓN AL MISMO ARCHIVO JS EXTERNO -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
