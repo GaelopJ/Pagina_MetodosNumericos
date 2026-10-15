@@ -17,7 +17,7 @@
         <span class="menu-title">EJERCICIOS RESUELTOS</span>
         <a href="{{ url_for('ejercicios', metodo='punto_fijo') }}" class="menu-link interactable">Punto Fijo</a>
         <a href="{{ url_for('ejercicios', metodo='newton_raphson') }}" class="menu-link interactable">Newton-Raphson</a>
-        <a href="{{ url_for('ejercicios', metodo='secante') }}" class="menu-link interactable">Secante</a>
+        <!--  <a href="{{ url_for('ejercicios', metodo='secante') }}" class="menu-link interactable">Secante</a>-->
         <a href="{{ url_for('ejercicios', metodo='biseccion') }}" class="menu-link interactable">Bisección</a>
     </nav>
 
@@ -39,15 +39,15 @@
     <section class="about-section">
         <div class="about-block left interactable">
             <h2 class="about-subtitle">Visión</h2>
-            <p class="about-text">Convertir la complejidad matemática en una experiencia visualmente intuitiva, creando un estándar moderno para las herramientas de cálculo en la ingeniería.</p>
+            <p class="about-text">Ser un referente digital de consulta y aprendizaje en métodos numéricos, impulsando el pensamiento computacional y la resolución eficiente de problemas matemáticos complejos en la ingeniería y la ciencia.</p>
         </div>
         <div class="about-block right interactable">
             <h2 class="about-subtitle">Misión</h2>
-            <p class="about-text">Desarrollar un motor numérico robusto y de alta precisión, envuelto en un diseño minimalista que optimice el flujo de trabajo y el análisis de algoritmos.</p>
+            <p class="about-text">Proveer recursos teóricos, prácticos y herramientas interactivas accesibles que faciliten la comprensión y aplicación de algoritmos numéricos para aproximar soluciones reales en el ámbito académico y profesional.</p>
         </div>
         <div class="about-block left interactable">
             <h2 class="about-subtitle">Objetivo</h2>
-            <p class="about-text">Construir una plataforma integral que fusione la potencia del backend computacional con animaciones de vanguardia, facilitando la resolución en tiempo real.</p>
+            <p class="about-text">Explicar y demostrar de forma clara los principales algoritmos de aproximación matemática, optimizando su implementación en software para resolver problemas que no tienen solución analítica exacta.</p>
         </div>
         <div class="about-block center interactable">
             <h2 class="transition-title">Métodos<br>Numéricos</h2>
@@ -96,7 +96,7 @@
             </div>
 
             <!-- PANEL 3: SECANTE -->
-            <div class="panel" id="secante">
+            <!-- <div class="panel" id="secante">
                 <span class="panel-number">03</span>
                 <h2>Secante</h2>
                 <form class="calc-form" onsubmit="event.preventDefault(); ejecutar('secante')">
@@ -113,11 +113,11 @@
                 </form>
                 <div id="res-sec" class="result-box"></div>
                 <div class="table-container"><table id="tab-sec"></table></div>
-            </div>
+            </div> -->
 
             <!-- PANEL 4: BISECCIÓN -->
             <div class="panel" id="biseccion">
-                <span class="panel-number">04</span>
+                <span class="panel-number">03</span>
                 <h2>Bisección</h2>
                 <form class="calc-form" onsubmit="event.preventDefault(); ejecutar('biseccion')">
                     <div class="input-row"><input type="text" class="calc-input interactable" id="fun-bis" placeholder="Función f(x)" required></div>
@@ -143,8 +143,37 @@
             <div class="footer-content-inner">
                 <div>
                     <h2>Equipo de Ingeniería</h2>
-                    <p class="colaboradores"><strong>Líder de Proyecto:</strong> Johan Gael Rodríguez Carrillo<br></p>
+                    <p class="colaboradores"><strong>Integrantes:</strong> Johan Gael Rodríguez Carrillo, Bruno Balam Raygoza Moreno, Gabriel Anibal Macias Paredes, Pablo Armando Gamez Campos, Angel David Alducin Salazar <br></p>
                 </div>
+                <div>
+                    <h2>Conectar</h2>
+                    <div class="Redes sociales">
+                        <a href="https://www.instagram.com/met.numericos_6" target="_blank" class="social-link interactable">Instagram</a>
+                    </div>
+                </div>
+
+                <h1 class="fuentes-titulo">Fuentes de Información</h1>
+    <p class="fuentes-sub">Referencias bibliográficas formales de apoyo para el diseño, rigor matemático y validación de los algoritmos iterativos implementados en el motor.</p>
+
+    <!-- Referencia 1 -->
+    <div class="referencia-bloque interactable">
+        <h3 class="referencia-autores">Chapra, S. C., & Canale, R. P. (2015)</h3>
+        <p class="referencia-texto">
+            <i>Métodos numéricos para ingenieros</i> (7ª ed.). McGraw-Hill Education.<br>
+            <b>Enfoque en el proyecto:</b> Fundamentos analíticos y gráficos para los métodos de Bisección, Punto Fijo, Newton-Raphson y Secante, así como la estimación de errores absolutos y relativos.
+        </p>
+    </div>
+
+    <!-- Referencia 2 -->
+    <div class="referencia-bloque interactable">
+        <h3 class="referencia-autores">Burden, R. L., & Faires, J. D. (2016)</h3>
+        <p class="referencia-texto">
+            <i>Análisis numérico</i> (10ª ed.). Cengage Learning.<br>
+            <b>Enfoque en el proyecto:</b> Rigor matemático en las demostraciones de convergencia cuadrática y lineal, análisis de estabilidad de funciones iterativas y condiciones de parada.
+        </p>
+    </div>
+
+</div>
             </div>
         </div>
     </section>

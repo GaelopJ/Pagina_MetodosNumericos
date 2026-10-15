@@ -27,32 +27,1566 @@
             <div class="ejercicio-bloque interactable">
                 <h3 class="ejercicio-titulo">Ejercicio 1</h3>
                 <div class="ejercicio-contenido">
-                    <p>Encontrar la raíz de la función:</p>
-                    <p>$$ f(x) = x^2 - 2x - 3 $$</p>
-                    <p><strong>Paso 1 (Despeje):</strong> Despejamos $x$ para obtener $g(x)$.</p>
-                    <p>$$ x = \sqrt{2x + 3} \quad \text{o} \quad g(x) = \sqrt{2x + 3} $$</p>
-                    <p><strong>Datos iniciales:</strong> $x_0 = 4$, Tolerancia = $0.001$</p>
-                    <p><strong>Solución esperada:</strong> Raíz en $x = 3$.</p>
+                    <p>Aplicar el método de punto fijo para establecer una aproximación de la raíz de la función:</p>
+    <p>$$ f(x) = 2e^{x^2} - 5x $$</p>
+    
+    <p><strong>Paso 1 (Despeje):</strong> Despejamos $x$ de $f(x) = 0$ para obtener nuestra función $g(x)$.</p>
+    <p>$$ 5x = 2e^{x^2} \quad \Rightarrow \quad x = \frac{2e^{x^2}}{5} \quad \text{o} \quad g(x) = 0.4e^{x^2} $$</p>
+    
+    <p><strong>Datos iniciales:</strong> $x_0 = 0$, Tolerancia $E_a = 0.01$ (interpretado como un error relativo porcentual del $1\%$).</p>
+    
+    <p><strong>Iteración 1:</strong></p>
+    <p>$$ x_1 = g(0) = 0.4e^{(0)^2} = 0.4 $$</p>
+    
+    <p><strong>Iteración 2:</strong></p>
+    <p>$$ x_2 = g(0.4) = 0.4e^{(0.4)^2} = 0.46939 $$</p>
+    <p>$$ Error = \left| \frac{0.46939 - 0.4}{0.46939} \right| \times 100 = 14.78\% $$</p>
+
+    <p><strong>Iteración 3:</strong></p>
+    <p>$$ x_3 = g(0.46939) = 0.4e^{(0.46939)^2} = 0.49856 $$</p>
+    <p>$$ Error = \left| \frac{0.49856 - 0.46939}{0.49856} \right| \times 100 = 5.85\% $$</p>
+
+    <p><strong>Iteración 4:</strong></p>
+    <p>$$ x_4 = g(0.49856) = 0.4e^{(0.49856)^2} = 0.51292 $$</p>
+    <p>$$ Error = \left| \frac{0.51292 - 0.49856}{0.51292} \right| \times 100 = 2.79\% $$</p>
+
+    <p><strong>Iteración 5:</strong></p>
+    <p>$$ x_5 = g(0.51292) = 0.4e^{(0.51292)^2} = 0.52033 $$</p>
+    <p>$$ Error = \left| \frac{0.52033 - 0.51292}{0.52033} \right| \times 100 = 1.42\% $$</p>
+
+    <p><strong>Iteración 6:</strong></p>
+    <p>$$ x_6 = g(0.52033) = 0.4e^{(0.52033)^2} = 0.52441 $$</p>
+    <p>$$ Error = \left| \frac{0.52441 - 0.52033}{0.52441} \right| \times 100 = 0.77\% $$</p>
+    
+    <p><strong>Solución final:</strong> En la iteración 6, el error es de $0.77\%$, lo cual ya es menor o igual a la tolerancia de $0.01$ ($1\%$). La raíz aproximada es $x \approx 0.52441$. <em>(Nota: Si se toma $E_a$ como error absoluto, en la iteración 5 ya se cumple que $|0.52033 - 0.51292| = 0.0074 \le 0.01$).</em></p>
                 </div>
             </div>
+
+            <!--Ejercicio 2-->
+            <div class="ejercicio-bloque interactable">
+                <h3 class="ejercicio-titulo">Ejercicio 2 </h3>
+<div class="ejercicio-contenido">
+    <p>Encontrar la raíz de la función hasta alcanzar un error $E_a \le 0.01\%$:</p>
+    <p>$$ f(x) = e^{-x} - x $$</p>
+    
+    <p><strong>Paso 1 (Despeje):</strong> Despejamos $x$ de $f(x) = 0$ para obtener nuestra función $g(x)$.</p>
+    <p>$$ x = e^{-x} \quad \text{o} \quad g(x) = e^{-x} $$</p>
+    
+    <p><strong>Datos iniciales:</strong> Al no indicarse en el problema, asumiremos el valor estándar inicial $x_0 = 0$. Tolerancia $= 0.01\%$.</p>
+    
+    <p><strong>Iteración 1:</strong></p>
+    <p>$$ x_1 = e^{-(0)} = 1.0 $$</p>
+
+    <p><strong>Iteración 2:</strong></p>
+    <p>$$ x_2 = e^{-(1.0)} = 0.36788 $$</p>
+    <p>$$ Error = \left| \frac{0.36788 - 1.0}{0.36788} \right| \times 100 = 171.82\% $$</p>
+
+    <p><strong>Iteración 3:</strong></p>
+    <p>$$ x_3 = e^{-(0.36788)} = 0.69220 $$</p>
+    <p>$$ Error = \left| \frac{0.69220 - 0.36788}{0.69220} \right| \times 100 = 46.85\% $$</p>
+
+    <p><strong>Iteración 4:</strong></p>
+    <p>$$ x_4 = e^{-(0.69220)} = 0.50047 $$</p>
+    <p>$$ Error = \left| \frac{0.50047 - 0.69220}{0.50047} \right| \times 100 = 38.31\% $$</p>
+
+    <p><strong>Iteración 5:</strong></p>
+    <p>$$ x_5 = e^{-(0.50047)} = 0.60624 $$</p>
+    <p>$$ Error = \left| \frac{0.60624 - 0.50047}{0.60624} \right| \times 100 = 17.44\% $$</p>
+    
+    <p><strong>Iteraciones 6 a 17 (Resumen del progreso):</strong> El método converge lentamente de forma oscilatoria. En la iteración 17, obtenemos $x_{17} \approx 0.56718$ con un error relativo del $0.021\%$.</p>
+
+    <p><strong>Iteración 18:</strong></p>
+    <p>$$ x_{18} = e^{-(0.56718)} = 0.56711 $$</p>
+    <p>$$ Error = \left| \frac{0.56711 - 0.56718}{0.56711} \right| \times 100 = 0.012\% $$</p>
+
+    <p><strong>Iteración 19:</strong></p>
+    <p>$$ x_{19} = e^{-(0.56711)} = 0.56715 $$</p>
+    <p>$$ Error = \left| \frac{0.56715 - 0.56711}{0.56715} \right| \times 100 = 0.007\% $$</p>
+    
+    <p><strong>Solución final:</strong> En la iteración 19, se logra un error del $0.007\%$, cumpliendo por primera vez con la tolerancia estricta del $E_a \le 0.01\%$. La raíz aproximada es $x \approx 0.56715$.</p>
+</div>
+            </div>
+
+            <div class = "ejercicio-bloque interactable">
+                <!-- Ejercicio 3 -->
+                 <h3 class="ejercicio-titulo">Ejercicio 3</h3>
+<div class="ejercicio-contenido">
+    <p>Encontrar la raíz de la función iterando hasta que haya convergencia:</p>
+    <p>$$ f(x) = 2\sin(\sqrt{x}) - x $$</p>
+    
+    <p><strong>Paso 1 (Despeje):</strong> Igualamos $f(x) = 0$ y despejamos $x$ para obtener $g(x)$.</p>
+    <p>$$ x = 2\sin(\sqrt{x}) \quad \Rightarrow \quad g(x) = 2\sin(\sqrt{x}) $$</p>
+    
+    <p><strong>Datos iniciales:</strong> $x_0 = 0.5$. <em>Nota: Las funciones trigonométricas en métodos numéricos se evalúan en radianes.</em></p>
+    
+    <p><strong>Iteración 1:</strong></p>
+    <p>$$ x_1 = g(0.5) = 2\sin(\sqrt{0.5}) = 1.29927 $$</p>
+    <p>$$ Error = \left| \frac{1.29927 - 0.5}{1.29927} \right| \times 100 = 61.51\% $$</p>
+
+    <p><strong>Iteración 2:</strong></p>
+    <p>$$ x_2 = g(1.29927) = 2\sin(\sqrt{1.29927}) = 1.81714 $$</p>
+    <p>$$ Error = \left| \frac{1.81714 - 1.29927}{1.81714} \right| \times 100 = 28.49\% $$</p>
+
+    <p><strong>Iteración 3:</strong></p>
+    <p>$$ x_3 = g(1.81714) = 2\sin(\sqrt{1.81714}) = 1.95062 $$</p>
+    <p>$$ Error = \left| \frac{1.95062 - 1.81714}{1.95062} \right| \times 100 = 6.84\% $$</p>
+
+    <p><strong>Iteración 4:</strong></p>
+    <p>$$ x_4 = g(1.95062) = 2\sin(\sqrt{1.95062}) = 1.96984 $$</p>
+    <p>$$ Error = \left| \frac{1.96984 - 1.95062}{1.96984} \right| \times 100 = 0.97\% $$</p>
+
+    <p><strong>Iteración 5:</strong></p>
+    <p>$$ x_5 = g(1.96984) = 2\sin(\sqrt{1.96984}) = 1.97225 $$</p>
+    <p>$$ Error = \left| \frac{1.97225 - 1.96984}{1.97225} \right| \times 100 = 0.12\% $$</p>
+
+    <p><strong>Iteración 6:</strong></p>
+    <p>$$ x_6 = g(1.97225) = 2\sin(\sqrt{1.97225}) = 1.97255 $$</p>
+    <p>$$ Error = \left| \frac{1.97255 - 1.97225}{1.97255} \right| \times 100 = 0.015\% $$</p>
+    
+    <p><strong>Solución final:</strong> Continuando el proceso, los valores se estabilizan. En la iteración 6 el error ya es del $0.015\%$, y para la iteración 7 ($x_7 = 1.97258$) el error baja a $0.001\%$, demostrando que se ha alcanzado la convergencia. La raíz aproximada es $x \approx 1.9725$.</p>
+</div>
+                
+            </div>
+                    
+
+            <div class = "ejercicio-bloque interactable">
+                <!-- Ejercicio 4 -->
+<h3 class="ejercicio-titulo">Ejercicio 4 </h3>
+<div class="ejercicio-contenido">
+    <p>Encontrar la raíz de la función hasta alcanzar un error $E_a \le 0.01\%$:</p>
+    <p>$$ f(x) = x^3 - 10x - 5 = 0 $$</p>
+    
+    <p><strong>Paso 1 (Despeje):</strong> Existen múltiples formas de despejar $x$. La forma que asegura convergencia hacia la raíz más cercana al valor inicial es despejando el término lineal ($-10x$).</p>
+    <p>$$ 10x = x^3 - 5 \quad \Rightarrow \quad g(x) = \frac{x^3 - 5}{10} $$</p>
+    
+    <p><strong>Datos iniciales:</strong> $x_0 = 0.5$, Tolerancia $E_a \le 0.01\%$.</p>
+    
+    <p><strong>Iteración 1:</strong></p>
+    <p>$$ x_1 = \frac{(0.5)^3 - 5}{10} = -0.4875 $$</p>
+
+    <p><strong>Iteración 2:</strong></p>
+    <p>$$ x_2 = \frac{(-0.4875)^3 - 5}{10} = -0.51158 $$</p>
+    <p>$$ Error = \left| \frac{-0.51158 - (-0.4875)}{-0.51158} \right| \times 100 = 4.70\% $$</p>
+
+    <p><strong>Iteración 3:</strong></p>
+    <p>$$ x_3 = \frac{(-0.51158)^3 - 5}{10} = -0.51339 $$</p>
+    <p>$$ Error = \left| \frac{-0.51339 - (-0.51158)}{-0.51339} \right| \times 100 = 0.35\% $$</p>
+
+    <p><strong>Iteración 4:</strong></p>
+    <p>$$ x_4 = \frac{(-0.51339)^3 - 5}{10} = -0.51353 $$</p>
+    <p>$$ Error = \left| \frac{-0.51353 - (-0.51339)}{-0.51353} \right| \times 100 = 0.027\% $$</p>
+
+    <p><strong>Iteración 5:</strong></p>
+    <p>$$ x_5 = \frac{(-0.51353)^3 - 5}{10} = -0.51354 $$</p>
+    <p>$$ Error = \left| \frac{-0.51354 - (-0.51353)}{-0.51354} \right| \times 100 = 0.0019\% $$</p>
+    
+    <p><strong>Solución final:</strong> En la iteración 5 se alcanza un error de $0.0019\%$, lo cual cumple perfectamente con la condición de convergencia $E_a \le 0.01\%$. La raíz aproximada es $x \approx -0.51354$.</p>
+</div>
+                
+            </div>
+
+
+            <div class = "ejercicio-bloque interactable">
+                <!-- Ejercicio 5 -->
+                 <h3 class="ejercicio-titulo">Ejercicio 5 </h3>
+<div class="ejercicio-contenido">
+    
+    <p>Calcular la profundidad $H$ de un canal rectangular utilizando la ecuación de Manning.</p>
+    
+    <p><strong>Datos iniciales:</strong></p>
+    <ul>
+        <li>Caudal $Q = 60\text{ m}^3\text{/s}$</li>
+        <li>Pendiente $S = 0.0007\text{ m/m}$</li>
+        <li>Ancho de canal $B = 15\text{ m}$</li>
+        <li>Coeficiente de rugosidad $n = 0.04$</li>
+        <li>Intervalo de búsqueda: $[0, 20]$ para 7 iteraciones</li>
+    </ul>
+
+    <p><strong>Ecuación de Manning y Función $f(H)$:</strong></p>
+    <p>$$ Q = \frac{\sqrt{S} (BH)^{5/3}}{n(B + 2H)^{2/3}} $$</p>
+    <p>$$ f(H) = \frac{\sqrt{0.0007} (15H)^{5/3}}{0.04(15 + 2H)^{2/3}} - 60 $$</p>
+
+    <p><strong>Evaluación inicial:</strong> $H_i = 0$, $H_f = 20$. <br> 
+    $f(0) = -60 < 0$ <br> 
+    $f(20) = +554.8 > 0$ <br>
+    Hay cambio de signo, la raíz existe en el intervalo $[0, 20]$.</p>
+    
+    <p><strong>Iteración 1:</strong></p>
+    <p>$$ H_m = \frac{0 + 20}{2} = 10 $$</p>
+    <p>$$ Error_a = 10 \quad | \quad f(10) > 0 $$</p>
+    <p>Como $f(H_m)$ es positivo, sustituye a $H_f$. El nuevo intervalo es $[0, 10]$.</p>
+
+    <p><strong>Iteración 2:</strong></p>
+    <p>$$ H_m = \frac{0 + 10}{2} = 5 $$</p>
+    <p>$$ Error_a = 5 \quad | \quad f(5) > 0 $$</p>
+    <p>Como $f(H_m)$ es positivo, sustituye a $H_f$. El nuevo intervalo es $[0, 5]$.</p>
+
+    <p><strong>Iteración 3:</strong></p>
+    <p>$$ H_m = \frac{0 + 5}{2} = 2.5 $$</p>
+    <p>$$ Error_a = 2.5 \quad | \quad f(2.5) < 0 $$</p>
+    <p>Como $f(H_m)$ es negativo, sustituye a $H_i$. El nuevo intervalo es $[2.5, 5]$.</p>
+
+    <p><strong>Iteración 4:</strong></p>
+    <p>$$ H_m = \frac{2.5 + 5}{2} = 3.75 $$</p>
+    <p>$$ Error_a = 1.25 \quad | \quad f(3.75) > 0 $$</p>
+    <p>Como $f(H_m)$ es positivo, sustituye a $H_f$. El nuevo intervalo es $[2.5, 3.75]$.</p>
+
+    <p><strong>Iteración 5:</strong></p>
+    <p>$$ H_m = \frac{2.5 + 3.75}{2} = 3.125 $$</p>
+    <p>$$ Error_a = 0.625 \quad | \quad f(3.125) < 0 $$</p>
+    <p>Como $f(H_m)$ es negativo, sustituye a $H_i$. El nuevo intervalo es $[3.125, 3.75]$.</p>
+
+    <p><strong>Iteración 6:</strong></p>
+    <p>$$ H_m = \frac{3.125 + 3.75}{2} = 3.4375 $$</p>
+    <p>$$ Error_a = 0.3125 \quad | \quad f(3.4375) > 0 $$</p>
+    <p>Como $f(H_m)$ es positivo, sustituye a $H_f$. El nuevo intervalo es $[3.125, 3.4375]$.</p>
+
+    <p><strong>Iteración 7:</strong></p>
+    <p>$$ H_m = \frac{3.125 + 3.4375}{2} = 3.28125 $$</p>
+    <p>$$ Error_a = 0.15625 $$</p>
+    
+    <p><strong>Solución final:</strong> Tras completarse las 7 iteraciones de la tabla, la profundidad aproximada del canal es $H = 3.28125\text{ m}$.</p>
+</div>
+                
+                
+            </div>
+
+
+
+            <div class = "ejercicio-bloque interactable">
+                <!-- Ejercicio 6 -->
+                <h3 class="ejercicio-titulo">Ejercicio 6</h3>
+<div class="ejercicio-contenido">
+    <p>Encontrar la raíz de la función realizando exactamente 20 iteraciones:</p>
+    <p>$$ f(x) = e^{-x} - x = 0 $$</p>
+    
+    <p><strong>Paso 1 (Despeje):</strong> Despejamos $x$ para obtener $g(x)$.</p>
+    <p>$$ x = e^{-x} \quad \Rightarrow \quad g(x) = e^{-x} $$</p>
+    
+    <p><strong>Datos iniciales:</strong> $x_0 = 0$, Iteraciones $i = 20$.</p>
+    
+    <p><strong>Iteración 1:</strong></p>
+    <p>$$ x_1 = e^{-(0)} = 1.0 $$</p>
+
+    <p><strong>Iteración 2:</strong></p>
+    <p>$$ x_2 = e^{-(1.0)} = 0.36788 $$</p>
+
+    <p><strong>Iteración 3:</strong></p>
+    <p>$$ x_3 = e^{-(0.36788)} = 0.69220 $$</p>
+
+    <p><strong>Iteración 4:</strong></p>
+    <p>$$ x_4 = e^{-(0.69220)} = 0.50047 $$</p>
+
+    <p><strong>Iteración 5:</strong></p>
+    <p>$$ x_5 = e^{-(0.50047)} = 0.60624 $$</p>
+    
+    <p><strong>... Continuamos hasta la iteración 20 ...</strong></p>
+
+    <p><strong>Iteración 19:</strong></p>
+    <p>$$ x_{19} = 0.56715 $$</p>
+
+    <p><strong>Iteración 20:</strong></p>
+    <p>$$ x_{20} = e^{-(0.56715)} = 0.56714 $$</p>
+    
+    <p><strong>Solución final:</strong> Tras completarse las 20 iteraciones requeridas, la raíz aproximada es $x_{20} = 0.56714$.</p>
+</div>
+                
+            </div>
+
+
+
+            <div class = "ejercicio-bloque interactable">
+                <!-- Ejercicio 7 -->
+                <h3 class="ejercicio-titulo">Ejercicio 7</h3>
+<div class="ejercicio-contenido">
+    <p>Encontrar la raíz de la función hasta alcanzar un error $E_a < 1\%$:</p>
+    <p>$$ f(x) = x e^x - 2 = 0 $$</p>
+    
+    <p><strong>Paso 1 (Despeje):</strong> Despejamos $x$ de la función para obtener $g(x)$.</p>
+    <p>$$ x e^x = 2 \quad \Rightarrow \quad x = \frac{2}{e^x} \quad \Rightarrow \quad g(x) = 2e^{-x} $$</p>
+    
+    <p><strong>Datos iniciales:</strong> $x_0 = 2$, Tolerancia $E_a < 1\%$.</p>
+    
+    <p><strong>Iteración 1:</strong></p>
+    <p>$$ x_1 = 2e^{-(2)} = 0.27067 $$</p>
+    <p>$$ Error = \left| \frac{0.27067 - 2}{0.27067} \right| \times 100 = 638.9\% $$</p>
+
+    <p><strong>Iteración 2:</strong></p>
+    <p>$$ x_2 = 2e^{-(0.27067)} = 1.52554 $$</p>
+    <p>$$ Error = \left| \frac{1.52554 - 0.27067}{1.52554} \right| \times 100 = 82.25\% $$</p>
+
+    <p><strong>Iteración 3:</strong></p>
+    <p>$$ x_3 = 2e^{-(1.52554)} = 0.43503 $$</p>
+    <p>$$ Error = \left| \frac{0.43503 - 1.52554}{0.43503} \right| \times 100 = 250.6\% $$</p>
+    
+    <p><em>Nota: Este despeje produce una convergencia oscilatoria y lenta (los valores suben y bajan saltando alrededor de la raíz verdadera).</em></p>
+
+    <p><strong>... Resumen de iteraciones avanzadas ...</strong></p>
+    
+    <p><strong>Iteración 30:</strong></p>
+    <p>$$ x_{30} = 0.85116 \quad | \quad Error = 1.02\% $$</p>
+
+    <p><strong>Iteración 31:</strong></p>
+    <p>$$ x_{31} = 2e^{-(0.85116)} = 0.84378 $$</p>
+    <p>$$ Error = \left| \frac{0.84378 - 0.85116}{0.84378} \right| \times 100 = 0.87\% $$</p>
+
+    <p><strong>Solución final:</strong> En la iteración 31 se logra un error del $0.87\%$, cumpliendo con la tolerancia $E_a < 1\%$. La raíz aproximada es $x \approx 0.84378$.</p>
+</div>
+                
+            </div>
+
+            <div class = "ejercicio-bloque interactable">
+                <!-- Ejercicio 8 -->
+                <h3 class="ejercicio-titulo">Ejercicio 8</h3>
+<div class="ejercicio-contenido">
+    <p>Encontrar la raíz de la función hasta la convergencia:</p>
+    <p>$$ f(x) = 2x^2 - x - 5 = 0 $$</p>
+    
+    <p><strong>Paso 1 (Despeje):</strong> Para asegurar la convergencia (haciendo que $|g'(x)| < 1$), despejamos la $x$ del término cuadrático.</p>
+    <p>$$ 2x^2 = x + 5 \quad \Rightarrow \quad x^2 = \frac{x + 5}{2} \quad \Rightarrow \quad g(x) = \sqrt{\frac{x + 5}{2}} $$</p>
+    
+    <p><strong>Datos iniciales:</strong> $x_0 = 2$.</p>
+    
+    <p><strong>Iteración 1:</strong></p>
+    <p>$$ x_1 = \sqrt{\frac{2 + 5}{2}} = 1.87083 $$</p>
+
+    <p><strong>Iteración 2:</strong></p>
+    <p>$$ x_2 = \sqrt{\frac{1.87083 + 5}{2}} = 1.85349 $$</p>
+
+    <p><strong>Iteración 3:</strong></p>
+    <p>$$ x_3 = \sqrt{\frac{1.85349 + 5}{2}} = 1.85115 $$</p>
+
+    <p><strong>Iteración 4:</strong></p>
+    <p>$$ x_4 = \sqrt{\frac{1.85115 + 5}{2}} = 1.85083 $$</p>
+
+    <p><strong>Iteración 5:</strong></p>
+    <p>$$ x_5 = \sqrt{\frac{1.85083 + 5}{2}} = 1.85078 $$</p>
+    
+    <p><strong>Iteración 6:</strong></p>
+    <p>$$ x_6 = \sqrt{\frac{1.85078 + 5}{2}} = 1.85078 $$</p>
+
+    <p><strong>Solución final:</strong> El valor se estabiliza rápidamente. La raíz converge en $x \approx 1.85078$.</p>
+</div>
+                
+            </div>
+
+            <div class = "ejercicio-bloque interactable">
+                <!-- Ejercicio 9 -->
+                <h3 class="ejercicio-titulo">Ejercicio 9</h3>
+<div class="ejercicio-contenido">
+    <p>Encontrar la raíz de la función hasta la convergencia usando 4 dígitos:</p>
+    <p>$$ f(x) = x^2 - 1.5x + 0.5 = 0 $$</p>
+    
+    <p><strong>Paso 1 (Despeje):</strong> Despejamos el término lineal para obtener una forma iterativa estable.</p>
+    <p>$$ 1.5x = x^2 + 0.5 \quad \Rightarrow \quad g(x) = \frac{x^2 + 0.5}{1.5} $$</p>
+    
+    <p><strong>Datos iniciales:</strong> $x_0 = 0.325$.</p>
+    
+    <p><strong>Iteración 1:</strong></p>
+    <p>$$ x_1 = \frac{(0.325)^2 + 0.5}{1.5} = 0.40375 $$</p>
+
+    <p><strong>Iteración 2:</strong></p>
+    <p>$$ x_2 = \frac{(0.40375)^2 + 0.5}{1.5} = 0.44201 $$</p>
+
+    <p><strong>Iteración 3:</strong></p>
+    <p>$$ x_3 = \frac{(0.44201)^2 + 0.5}{1.5} = 0.46358 $$</p>
+
+    <p><strong>Iteración 4:</strong></p>
+    <p>$$ x_4 = \frac{(0.46358)^2 + 0.5}{1.5} = 0.47661 $$</p>
+    
+    <p><strong>... Resumen de iteraciones ...</strong></p>
+    <p>Continuando el proceso para acercarnos a la raíz:</p>
+    <p>$$ x_8 = 0.49520 $$</p>
+    <p>$$ x_{12} = 0.49880 $$</p>
+    <p>$$ x_{16} = 0.49970 $$</p>
+
+    <p><strong>Solución final:</strong> Conforme el método avanza, los valores se asientan paulatinamente. Evaluando a 4 dígitos de precisión, la convergencia se establece exactamente en $x = 0.5000$.</p>
+</div>
+                
+            </div>
+
+            <div class = "ejercicio-bloque interactable">
+                <!-- Ejercicio 10 -->
+                <h3 class="ejercicio-titulo">Ejercicio 10</h3>
+<div class="ejercicio-contenido">
+    <p>Encontrar la raíz de la función hasta alcanzar un error $E_a \le 0.05\%$:</p>
+    <p>$$ f(x) = -x^2 + 1.8x + 2.5 = 0 $$</p>
+    
+    <p><strong>Paso 1 (Despeje):</strong> Reordenamos y despejamos $x$ del término cuadrático para asegurar convergencia.</p>
+    <p>$$ x^2 = 1.8x + 2.5 \quad \Rightarrow \quad g(x) = \sqrt{1.8x + 2.5} $$</p>
+    
+    <p><strong>Datos iniciales:</strong> $x_0 = 5$, Tolerancia $E_a \le 0.05\%$.</p>
+    
+    <p><strong>Iteración 1:</strong></p>
+    <p>$$ x_1 = \sqrt{1.8(5) + 2.5} = \sqrt{11.5} = 3.39116 $$</p>
+
+    <p><strong>Iteración 2:</strong></p>
+    <p>$$ x_2 = \sqrt{1.8(3.39116) + 2.5} = 2.93327 $$</p>
+    <p>$$ Error = \left| \frac{2.93327 - 3.39116}{2.93327} \right| \times 100 = 15.6\% $$</p>
+
+    <p><strong>Iteración 3:</strong></p>
+    <p>$$ x_3 = \sqrt{1.8(2.93327) + 2.5} = 2.78924 $$</p>
+    <p>$$ Error = \left| \frac{2.78924 - 2.93327}{2.78924} \right| \times 100 = 5.16\% $$</p>
+
+    <p><strong>Iteración 4:</strong></p>
+    <p>$$ x_4 = \sqrt{1.8(2.78924) + 2.5} = 2.74238 $$</p>
+    <p>$$ Error = \left| \frac{2.74238 - 2.78924}{2.74238} \right| \times 100 = 1.70\% $$</p>
+
+    <p><strong>Iteración 5:</strong></p>
+    <p>$$ x_5 = \sqrt{1.8(2.74238) + 2.5} = 2.72695 $$</p>
+    <p>$$ Error = \left| \frac{2.72695 - 2.74238}{2.72695} \right| \times 100 = 0.56\% $$</p>
+
+    <p><strong>Iteración 6:</strong></p>
+    <p>$$ x_6 = \sqrt{1.8(2.72695) + 2.5} = 2.72186 $$</p>
+    <p>$$ Error = \left| \frac{2.72186 - 2.72695}{2.72186} \right| \times 100 = 0.18\% $$</p>
+
+    <p><strong>Iteración 7:</strong></p>
+    <p>$$ x_7 = \sqrt{1.8(2.72186) + 2.5} = 2.72017 $$</p>
+    <p>$$ Error = \left| \frac{2.72017 - 2.72186}{2.72017} \right| \times 100 = 0.062\% $$</p>
+
+    <p><strong>Iteración 8:</strong></p>
+    <p>$$ x_8 = \sqrt{1.8(2.72017) + 2.5} = 2.71961 $$</p>
+    <p>$$ Error = \left| \frac{2.71961 - 2.72017}{2.71961} \right| \times 100 = 0.020\% $$</p>
+    
+    <p><strong>Solución final:</strong> En la iteración 8, el error porcentual desciende a $0.02\%$, siendo menor a la tolerancia permitida del $0.05\%$. La raíz aproximada es $x \approx 2.71961$.</p>
+</div>
+                
+            </div>
+
+
+
+
+
+
+
+
+
 
         {% elif metodo == 'newton_raphson' %}
             <h1 class="metodo-titulo">Newton-Raphson</h1>
             <div class="ejercicio-bloque interactable">
                 <h3 class="ejercicio-titulo">Ejercicio 1</h3>
-                <div class="ejercicio-contenido">
-                    <p>Encontrar la raíz de la función:</p>
-                    <p>$$ f(x) = e^x - x - 2 $$</p>
-                    <p><strong>Derivada:</strong></p>
-                    <p>$$ f'(x) = e^x - 1 $$</p>
-                </div>
+<div class="ejercicio-contenido">
+    <p>Encontrar la raíz de la función estabilizando hasta 3 decimales, tomando todos los decimales en los cálculos:</p>
+    <p>$$ f(x) = e^{-x} - x $$</p>
+    
+    <p><strong>Paso 1 (Derivada):</strong> Calculamos la primera derivada $f'(x)$ para aplicar la fórmula de Newton-Raphson: $x_{i+1} = x_i - \frac{f(x_i)}{f'(x_i)}$.</p>
+    <p>$$ f'(x) = -e^{-x} - 1 $$</p>
+    
+    <p><strong>Datos iniciales:</strong> $x_0 = 0$.</p>
+    
+    <p><strong>Iteración 1:</strong></p>
+    <p>$$ f(0) = e^{-(0)} - 0 = 1 $$</p>
+    <p>$$ f'(0) = -e^{-(0)} - 1 = -2 $$</p>
+    <p>$$ x_1 = 0 - \frac{1}{-2} = 0.5 $$</p>
+
+    <p><strong>Iteración 2:</strong></p>
+    <p>$$ f(0.5) = e^{-0.5} - 0.5 = 0.1065306597 $$</p>
+    <p>$$ f'(0.5) = -e^{-0.5} - 1 = -1.6065306597 $$</p>
+    <p>$$ x_2 = 0.5 - \frac{0.1065306597}{-1.6065306597} = 0.5663110032 $$</p>
+
+    <p><strong>Iteración 3:</strong></p>
+    <p>$$ f(0.566311) = e^{-0.566311} - 0.566311 = 0.0013045100 $$</p>
+    <p>$$ f'(0.566311) = -e^{-0.566311} - 1 = -1.5676155132 $$</p>
+    <p>$$ x_3 = 0.5663110032 - \frac{0.0013045100}{-1.5676155132} = 0.5671431650 $$</p>
+
+    <p><strong>Iteración 4:</strong></p>
+    <p>$$ f(0.567143) = e^{-0.567143} - 0.567143 = 0.0000001965 $$</p>
+    <p>$$ f'(0.567143) = -e^{-0.567143} - 1 = -1.5671433615 $$</p>
+    <p>$$ x_4 = 0.5671431650 - \frac{0.0000001965}{-1.5671433615} = 0.5671432904 $$</p>
+    
+    <p><strong>Solución final:</strong> A partir de la iteración 3 y 4, los primeros tres decimales ($0.567$) se mantienen sin cambios. La raíz aproximada es $x \approx 0.567$.</p>
+</div>
             </div>
 
-        {% elif metodo == 'secante' %}
+            <div class="ejercicio-bloque interactable">
+                <!-- Ejercicio 2 -->
+                <h3 class="ejercicio-titulo">Ejercicio 2 </h3>
+<div class="ejercicio-contenido">
+    <p>Obtener la raíz positiva de la siguiente ecuación hasta su convergencia:</p>
+    <p>$$ f(x) = 2\cos(x) - e^x = 0 $$</p>
+    
+    <p><strong>Paso 1 (Derivada):</strong> Calculamos la primera derivada $f'(x)$. Nota: Al trabajar con funciones trigonométricas en cálculo, los valores se asumen en radianes.</p>
+    <p>$$ f'(x) = -2\sin(x) - e^x $$</p>
+    
+    <p><strong>Datos iniciales:</strong> $x_0 = 0.785 \approx \pi/4$. Usaremos el valor $0.785398$ en los cálculos para mantener precisión.</p>
+    
+    <p><strong>Iteración 1:</strong></p>
+    <p>$$ f(0.785398) = 2\cos(0.785398) - e^{0.785398} = -0.779066 $$</p>
+    <p>$$ f'(0.785398) = -2\sin(0.785398) - e^{0.785398} = -3.607493 $$</p>
+    <p>$$ x_1 = 0.785398 - \frac{-0.779066}{-3.607493} = 0.569440 $$</p>
+
+    <p><strong>Iteración 2:</strong></p>
+    <p>$$ f(0.569440) = 2\cos(0.569440) - e^{0.569440} = -0.082916 $$</p>
+    <p>$$ f'(0.569440) = -2\sin(0.569440) - e^{0.569440} = -2.845578 $$</p>
+    <p>$$ x_2 = 0.569440 - \frac{-0.082916}{-2.845578} = 0.540301 $$</p>
+
+    <p><strong>Iteración 3:</strong></p>
+    <p>$$ f(0.540301) = 2\cos(0.540301) - e^{0.540301} = -0.001360 $$</p>
+    <p>$$ f'(0.540301) = -2\sin(0.540301) - e^{0.540301} = -2.745308 $$</p>
+    <p>$$ x_3 = 0.540301 - \frac{-0.001360}{-2.745308} = 0.539806 $$</p>
+
+    <p><strong>Iteración 4:</strong></p>
+    <p>$$ f(0.539806) = 2\cos(0.539806) - e^{0.539806} = -0.0000004 $$</p>
+    <p>$$ f'(0.539806) = -2\sin(0.539806) - e^{0.539806} = -2.743613 $$</p>
+    <p>$$ x_4 = 0.539806 - \frac{-0.0000004}{-2.743613} = 0.539806 $$</p>
+    
+    <p><strong>Solución final:</strong> En la iteración 4, el valor de $x$ se estabiliza, alcanzando la convergencia solicitada. La raíz aproximada es $x \approx 0.539806$.</p>
+</div>
+            </div>
+
+        <div class="ejercicio-bloque interactable">
+            <!-- Ejercicio 3 -->
+            <h3 class="ejercicio-titulo">Ejercicio 3 </h3>
+<div class="ejercicio-contenido">
+    <p>Aproximar el valor de $\sqrt{5}$ mediante el método numérico estabilizando hasta 4 decimales.</p>
+    
+    <p><strong>Paso 1 (Planteamiento y Derivada):</strong> En el problema se indica $f(x) = \sqrt{5}$. Para resolver esto usando el método de Newton-Raphson, debemos transformar el cálculo de una raíz cuadrada en un problema de búsqueda de raíces para una ecuación igualada a cero. Planteamos $x = \sqrt{5}$, lo elevamos al cuadrado para obtener $x^2 = 5$, y formamos la función $f(x) = x^2 - 5 = 0$. Calculamos su primera derivada:</p>
+    <p>$$ f'(x) = 2x $$</p>
+    
+    <p><strong>Datos iniciales:</strong> $x_0 = 4$, y se requiere iterar hasta que se estabilicen 4 decimales.</p>
+    
+    <p><strong>Iteración 1:</strong></p>
+    <p>$$ f(4) = (4)^2 - 5 = 11 $$</p>
+    <p>$$ f'(4) = 2(4) = 8 $$</p>
+    <p>$$ x_1 = 4 - \frac{11}{8} = 2.625 $$</p>
+
+    <p><strong>Iteración 2:</strong></p>
+    <p>$$ f(2.625) = (2.625)^2 - 5 = 1.890625 $$</p>
+    <p>$$ f'(2.625) = 2(2.625) = 5.25 $$</p>
+    <p>$$ x_2 = 2.625 - \frac{1.890625}{5.25} = 2.264881 $$</p>
+
+    <p><strong>Iteración 3:</strong></p>
+    <p>$$ f(2.264881) = (2.264881)^2 - 5 = 0.129686 $$</p>
+    <p>$$ f'(2.264881) = 2(2.264881) = 4.529762 $$</p>
+    <p>$$ x_3 = 2.264881 - \frac{0.129686}{4.529762} = 2.236251 $$</p>
+
+    <p><strong>Iteración 4:</strong></p>
+    <p>$$ f(2.236251) = (2.236251)^2 - 5 = 0.000818 $$</p>
+    <p>$$ f'(2.236251) = 2(2.236251) = 4.472502 $$</p>
+    <p>$$ x_4 = 2.236251 - \frac{0.000818}{4.472502} = 2.236068 $$</p>
+
+    <p><strong>Iteración 5:</strong></p>
+    <p>$$ f(2.236068) = (2.236068)^2 - 5 \approx 0.0000001 $$</p>
+    <p>$$ f'(2.236068) = 2(2.236068) = 4.472136 $$</p>
+    <p>$$ x_5 = 2.236068 - \frac{0.0000001}{4.472136} = 2.236068 $$</p>
+    
+    <p><strong>Solución final:</strong> Entre la iteración 4 y la iteración 5, los valores muestran que los primeros 4 decimales se mantienen sin cambios (es decir, la convergencia es absoluta a este nivel de precisión). El resultado final estabilizado a 4 decimales es $x \approx 2.2360$.</p>
+</div>
+
+        </div>
+
+         <div class="ejercicio-bloque interactable">
+            <!-- Ejercicio 4 -->
+<h3 class="ejercicio-titulo">Ejercicio 4 </h3>
+<div class="ejercicio-contenido">
+    <p>Emplear iteraciones por el método de Newton-Raphson para aproximar $\sqrt{5}$:</p>
+    <p>$$ f(x) = x^2 - 5 $$</p>
+    
+    <p><strong>Paso 1 (Derivada):</strong> Calculamos la primera derivada $f'(x)$ para utilizar la fórmula iterativa $x_{i+1} = x_i - \frac{f(x_i)}{f'(x_i)}$.</p>
+    <p>$$ f'(x) = 2x $$</p>
+    
+    <p><strong>Datos iniciales:</strong> $x_0 = 4$.</p>
+    
+    <p><strong>Iteración 1:</strong></p>
+    <p>$$ f(4) = (4)^2 - 5 = 11 $$</p>
+    <p>$$ f'(4) = 2(4) = 8 $$</p>
+    <p>$$ x_1 = 4 - \frac{11}{8} = 2.625 $$</p>
+
+    <p><strong>Iteración 2:</strong></p>
+    <p>$$ f(2.625) = (2.625)^2 - 5 = 1.890625 $$</p>
+    <p>$$ f'(2.625) = 2(2.625) = 5.25 $$</p>
+    <p>$$ x_2 = 2.625 - \frac{1.890625}{5.25} = 2.264881 $$</p>
+
+    <p><strong>Iteración 3:</strong></p>
+    <p>$$ f(2.264881) = (2.264881)^2 - 5 = 0.129686 $$</p>
+    <p>$$ f'(2.264881) = 2(2.264881) = 4.529762 $$</p>
+    <p>$$ x_3 = 2.264881 - \frac{0.129686}{4.529762} = 2.236251 $$</p>
+
+    <p><strong>Iteración 4:</strong></p>
+    <p>$$ f(2.236251) = (2.236251)^2 - 5 = 0.000818 $$</p>
+    <p>$$ f'(2.236251) = 2(2.236251) = 4.472502 $$</p>
+    <p>$$ x_4 = 2.236251 - \frac{0.000818}{4.472502} = 2.236068 $$</p>
+    
+    <p><strong>Solución final:</strong> Con 4 iteraciones el valor se estabiliza con un error minúsculo. La aproximación para $\sqrt{5}$ es $x \approx 2.236068$.</p>
+</div>
+        </div>
+
+
+         <div class="ejercicio-bloque interactable">
+            <!-- Ejercicio 5 -->
+<h3 class="ejercicio-titulo">Ejercicio 5 </h3>
+<div class="ejercicio-contenido">
+    <p>Encontrar la raíz de la función logrando una convergencia con 8 dígitos:</p>
+    <p>$$ f(x) = x^5 - x - 1 = 0 $$</p>
+    
+    <p><strong>Paso 1 (Derivada):</strong> Calculamos la derivada de la función para aplicar Newton-Raphson.</p>
+    <p>$$ f'(x) = 5x^4 - 1 $$</p>
+    
+    <p><strong>Datos iniciales:</strong> Al no indicarse un valor, propondremos $x_0 = 1$ para iniciar la búsqueda de la raíz, utilizando $8$ decimales de precisión en los cálculos como requiere el problema.</p>
+    
+    <p><strong>Iteración 1:</strong></p>
+    <p>$$ f(1) = (1)^5 - (1) - 1 = -1 $$</p>
+    <p>$$ f'(1) = 5(1)^4 - 1 = 4 $$</p>
+    <p>$$ x_1 = 1 - \frac{-1}{4} = 1.25000000 $$</p>
+
+    <p><strong>Iteración 2:</strong></p>
+    <p>$$ f(1.25) = (1.25)^5 - 1.25 - 1 = 0.80175781 $$</p>
+    <p>$$ f'(1.25) = 5(1.25)^4 - 1 = 11.20703125 $$</p>
+    <p>$$ x_2 = 1.25000000 - \frac{0.80175781}{11.20703125} = 1.17845941 $$</p>
+
+    <p><strong>Iteración 3:</strong></p>
+    <p>$$ f(1.17845941) = (1.17845941)^5 - 1.17845941 - 1 = 0.09573193 $$</p>
+    <p>$$ f'(1.17845941) = 5(1.17845941)^4 - 1 = 8.64908120 $$</p>
+    <p>$$ x_3 = 1.17845941 - \frac{0.09573193}{8.64908120} = 1.16739095 $$</p>
+
+    <p><strong>Iteración 4:</strong></p>
+    <p>$$ f(1.16739095) = (1.16739095)^5 - 1.16739095 - 1 = 0.00072173 $$</p>
+    <p>$$ f'(1.16739095) = 5(1.16739095)^4 - 1 = 8.29246536 $$</p>
+    <p>$$ x_4 = 1.16739095 - \frac{0.00072173}{8.29246536} = 1.16730392 $$</p>
+
+    <p><strong>Iteración 5:</strong></p>
+    <p>$$ f(1.16730392) = (1.16730392)^5 - 1.16730392 - 1 = 0.00000004 $$</p>
+    <p>$$ f'(1.16730392) = 5(1.16730392)^4 - 1 = 8.28937086 $$</p>
+    <p>$$ x_5 = 1.16730392 - \frac{0.00000004}{8.28937086} = 1.16730398 $$</p>
+    
+    <p><strong>Solución final:</strong> Evaluando una iteración más, los 8 dígitos decimales ya no cambian, logrando la convergencia absoluta con 8 dígitos como se solicitó. La raíz aproximada es $x \approx 1.16730398$.</p>
+</div>
+        </div>
+
+
+         <div class="ejercicio-bloque interactable">
+            <!-- Ejercicio 6 -->
+             <h3 class="ejercicio-titulo">Ejercicio 6 </h3>
+<div class="ejercicio-contenido">
+    <p>Encontrar la raíz de la función iterando hasta que converga:</p>
+    <p>$$ f(x) = \cos(x) - 3e^x = 0 $$</p>
+    
+    <p><strong>Paso 1 (Derivada):</strong> Calculamos la primera derivada $f'(x)$ para aplicar la fórmula $x_{i+1} = x_i - \frac{f(x_i)}{f'(x_i)}$. (Recuerda evaluar la función trigonométrica en radianes).</p>
+    <p>$$ f'(x) = -\sin(x) - 3e^x $$</p>
+    
+    <p><strong>Datos iniciales:</strong> $x_0 = -4$.</p>
+    
+    <p><strong>Iteración 1:</strong></p>
+    <p>$$ f(-4) = \cos(-4) - 3e^{-4} = -0.653644 - 3(0.018316) = -0.708590 $$</p>
+    <p>$$ f'(-4) = -\sin(-4) - 3e^{-4} = -0.756802 - 3(0.018316) = -0.811749 $$</p>
+    <p>$$ x_1 = -4 - \frac{-0.708590}{-0.811749} = -4.872918 $$</p>
+
+    <p><strong>Iteración 2:</strong></p>
+    <p>$$ f(-4.872918) = \cos(-4.872918) - 3e^{-4.872918} = 0.160161 - 3(0.007651) = 0.137208 $$</p>
+    <p>$$ f'(-4.872918) = -\sin(-4.872918) - 3e^{-4.872918} = -0.987091 - 3(0.007651) = -1.010044 $$</p>
+    <p>$$ x_2 = -4.872918 - \frac{0.137208}{-1.010044} = -4.737074 $$</p>
+
+    <p><strong>Iteración 3:</strong></p>
+    <p>$$ f(-4.737074) = \cos(-4.737074) - 3e^{-4.737074} = 0.024707 - 3(0.008764) = -0.001585 $$</p>
+    <p>$$ f'(-4.737074) = -\sin(-4.737074) - 3e^{-4.737074} = -0.999695 - 3(0.008764) = -1.025987 $$</p>
+    <p>$$ x_3 = -4.737074 - \frac{-0.001585}{-1.025987} = -4.738619 $$</p>
+
+    <p><strong>Iteración 4:</strong></p>
+    <p>$$ f(-4.738619) = \cos(-4.738619) - 3e^{-4.738619} = 0.026252 - 3(0.008751) = -0.000001 $$</p>
+    <p>$$ f'(-4.738619) = -\sin(-4.738619) - 3e^{-4.738619} = -0.999655 - 3(0.008751) = -1.025908 $$</p>
+    <p>$$ x_4 = -4.738619 - \frac{-0.000001}{-1.025908} = -4.738620 $$</p>
+
+    <p><strong>Iteración 5:</strong></p>
+    <p>$$ f(-4.738620) \approx 0.000000 $$</p>
+    <p>$$ x_5 = -4.738620 - \frac{0}{-1.025908} = -4.738620 $$</p>
+    
+    <p><strong>Solución final:</strong> En la iteración 4, el valor se estabiliza con 6 cifras decimales, demostrando que se ha alcanzado la convergencia. La raíz aproximada es $x \approx -4.738620$.</p>
+</div>
+
+        </div>
+
+
+         <div class="ejercicio-bloque interactable">
+            <!-- Ejercicio 7 -->
+             <h3 class="ejercicio-titulo">Ejercicio 7 </h3>
+<div class="ejercicio-contenido">
+    <p>Encontrar la raíz de la función polinomial:</p>
+    <p>$$ f(x) = 3.1230x^3 + 3.5480x^2 + 0.0543x - 0.0896 = 0 $$</p>
+    
+    <p><strong>Paso 1 (Derivada):</strong> Calculamos la primera derivada $f'(x)$ para poder aplicar la fórmula de Newton-Raphson $x_{i+1} = x_i - \frac{f(x_i)}{f'(x_i)}$.</p>
+    <p>$$ f'(x) = 9.3690x^2 + 7.0960x + 0.0543 $$</p>
+    
+    <p><strong>Datos iniciales:</strong> $x_0 = 0.0666$.</p>
+    
+    <p><strong>Iteración 1:</strong></p>
+    <p>$$ f(0.0666) = 3.1230(0.0666)^3 + 3.5480(0.0666)^2 + 0.0543(0.0666) - 0.0896 = -0.069324 $$</p>
+    <p>$$ f'(0.0666) = 9.3690(0.0666)^2 + 7.0960(0.0666) + 0.0543 = 0.568450 $$</p>
+    <p>$$ x_1 = 0.0666 - \frac{-0.069324}{0.568450} = 0.188554 $$</p>
+
+    <p><strong>Iteración 2:</strong></p>
+    <p>$$ f(0.188554) = 3.1230(0.188554)^3 + 3.5480(0.188554)^2 + 0.0543(0.188554) - 0.0896 = 0.067715 $$</p>
+    <p>$$ f'(0.188554) = 9.3690(0.188554)^2 + 7.0960(0.188554) + 0.0543 = 1.725381 $$</p>
+    <p>$$ x_2 = 0.188554 - \frac{0.067715}{1.725381} = 0.149307 $$</p>
+
+    <p><strong>Iteración 3:</strong></p>
+    <p>$$ f(0.149307) = 3.1230(0.149307)^3 + 3.5480(0.149307)^2 + 0.0543(0.149307) - 0.0896 = 0.007997 $$</p>
+    <p>$$ f'(0.149307) = 9.3690(0.149307)^2 + 7.0960(0.149307) + 0.0543 = 1.322641 $$</p>
+    <p>$$ x_3 = 0.149307 - \frac{0.007997}{1.322641} = 0.143260 $$</p>
+
+    <p><strong>Iteración 4:</strong></p>
+    <p>$$ f(0.143260) = 3.1230(0.143260)^3 + 3.5480(0.143260)^2 + 0.0543(0.143260) - 0.0896 = 0.000182 $$</p>
+    <p>$$ f'(0.143260) = 9.3690(0.143260)^2 + 7.0960(0.143260) + 0.0543 = 1.263155 $$</p>
+    <p>$$ x_4 = 0.143260 - \frac{0.000182}{1.263155} = 0.143116 $$</p>
+
+    <p><strong>Iteración 5:</strong></p>
+    <p>$$ f(0.143116) \approx 0.000000 $$</p>
+    <p>$$ f'(0.143116) = 1.261895 $$</p>
+    <p>$$ x_5 = 0.143116 - \frac{0}{1.261895} = 0.143116 $$</p>
+    
+    <p><strong>Solución final:</strong> El valor converge en la iteración 5. La raíz aproximada es $x \approx 0.143116$.</p>
+</div>
+
+        </div>
+
+
+         <div class="ejercicio-bloque interactable">
+            <!-- Ejercicio 8 -->
+             <h3 class="ejercicio-titulo">Ejercicio 8 </h3>
+<div class="ejercicio-contenido">
+    <p>Encontrar la raíz de la ecuación utilizando una precisión de hasta 10 cifras decimales:</p>
+    <p>$$ x^x = 100 $$</p>
+    
+    <p><strong>Paso 1 (Planteamiento y Derivada):</strong> Reescribimos la ecuación igualándola a cero para formar nuestra función $f(x) = x^x - 100 = 0$. Para derivar $x^x$, utilizamos derivación logarítmica ($y = x^x \Rightarrow \ln(y) = x\ln(x) \Rightarrow \frac{y'}{y} = \ln(x) + 1$), obteniendo:</p>
+    <p>$$ f'(x) = x^x(\ln(x) + 1) $$</p>
+    
+    <p><strong>Datos iniciales:</strong> Ya que $3^3 = 27$ y $4^4 = 256$, la raíz se encuentra entre 3 y 4. Propondremos como valor inicial $x_0 = 3.5$. Calcularemos hasta estabilizar 10 decimales.</p>
+    
+    <p><strong>Iteración 1:</strong></p>
+    <p>$$ f(3.5) = (3.5)^{3.5} - 100 = 80.2117802316 - 100 = -19.7882197684 $$</p>
+    <p>$$ f'(3.5) = (3.5)^{3.5}(\ln(3.5) + 1) = 80.2117802316(2.2527629685) = 180.6981442088 $$</p>
+    <p>$$ x_1 = 3.5 - \frac{-19.7882197684}{180.6981442088} = 3.6095098254 $$</p>
+
+    <p><strong>Iteración 2:</strong></p>
+    <p>$$ f(3.6095098254) = (3.6095098254)^{3.6095098254} - 100 = 4.9723223126 $$</p>
+    <p>$$ f'(3.6095098254) = (104.9723223126)(\ln(3.6095098254) + 1) = 239.7118671404 $$</p>
+    <p>$$ x_2 = 3.6095098254 - \frac{4.9723223126}{239.7118671404} = 3.5887669135 $$</p>
+
+    <p><strong>Iteración 3:</strong></p>
+    <p>$$ f(3.5887669135) = (3.5887669135)^{3.5887669135} - 100 = 0.0396001007 $$</p>
+    <p>$$ f'(3.5887669135) = (100.0396001007)(\ln(3.5887669135) + 1) = 227.8710636284 $$</p>
+    <p>$$ x_3 = 3.5887669135 - \frac{0.0396001007}{227.8710636284} = 3.5885931306 $$</p>
+
+    <p><strong>Iteración 4:</strong></p>
+    <p>$$ f(3.5885931306) = 0.0000027781 $$</p>
+    <p>$$ f'(3.5885931306) = 227.7760236894 $$</p>
+    <p>$$ x_4 = 3.5885931306 - \frac{0.0000027781}{227.7760236894} = 3.5885931184 $$</p>
+
+    <p><strong>Iteración 5:</strong></p>
+    <p>$$ f(3.5885931184) \approx 0.0000000000 $$</p>
+    <p>$$ x_5 = 3.5885931184 - \frac{0}{227.7760173559} = 3.5885931184 $$</p>
+    
+    <p><strong>Solución final:</strong> En la iteración 4 y 5 se logra estabilizar el valor de la raíz con una exactitud de 10 posiciones decimales, tal y como fue requerido. La raíz aproximada es $x \approx 3.5885931184$.</p>
+</div>
+
+        </div>
+
+
+         <div class="ejercicio-bloque interactable">
+            <!-- Ejercicio 9 -->
+<h3 class="ejercicio-titulo">Ejercicio 9</h3>
+<div class="ejercicio-contenido">
+    <p>Encontrar las raíces de la función evaluando con 3 distintos valores iniciales:</p>
+    <p>$$ f(x) = x^3 - 6x $$</p>
+
+    <p><strong>Paso 1 (Derivada):</strong> Calculamos la primera derivada $f'(x)$ para aplicar la fórmula iterativa de Newton-Raphson $x_{i+1} = x_i - \frac{f(x_i)}{f'(x_i)}$.</p>
+    <p>$$ f'(x) = 3x^2 - 6 $$</p>
+
+    <!-- Caso a -->
+    <p><strong>a) Para $x_0 = 5$:</strong></p>
+    <p>$$ x_1 = 5 - \frac{(5)^3 - 6(5)}{3(5)^2 - 6} = 5 - \frac{95}{69} = 3.623188 $$</p>
+    <p>$$ x_2 = 3.623188 - \frac{(3.623188)^3 - 6(3.623188)}{3(3.623188)^2 - 6} = 3.623188 - \frac{25.82586}{33.38250} = 2.849553 $$</p>
+    <p>$$ x_3 = 2.849553 - \frac{(2.849553)^3 - 6(2.849553)}{3(2.849553)^2 - 6} = 2.849553 - \frac{6.04092}{18.35985} = 2.520524 $$</p>
+    <p>$$ x_4 = 2.520524 - \frac{0.88992}{13.05912} = 2.452379 $$</p>
+    <p>$$ x_5 = 2.452379 - \frac{0.03468}{12.04248} = 2.449499 $$</p>
+    <p><em>Convergencia:</em> El valor se estabiliza en la raíz positiva $x \approx 2.449490$ (que corresponde a $\sqrt{6}$).</p>
+
+    <hr style="border: 0; border-top: 1px solid #ccc; margin: 15px 0;">
+
+    <!-- Caso b -->
+    <p><strong>b) Para $x_0 = -5$:</strong></p>
+    <p><em>Dado que la función es impar ($f(-x) = -f(x)$) y su derivada es par, el comportamiento iterativo es simétrico al caso "a".</em></p>
+    <p>$$ x_1 = -5 - \frac{(-5)^3 - 6(-5)}{3(-5)^2 - 6} = -5 - \frac{-95}{69} = -3.623188 $$</p>
+    <p>$$ x_2 = -3.623188 - \frac{(-3.623188)^3 - 6(-3.623188)}{3(-3.623188)^2 - 6} = -2.849553 $$</p>
+    <p>$$ x_3 = -2.849553 - \frac{(-2.849553)^3 - 6(-2.849553)}{3(-2.849553)^2 - 6} = -2.520524 $$</p>
+    <p><em>Convergencia:</em> El valor se estabiliza rápidamente en la raíz negativa $x \approx -2.449490$ (que corresponde a $-\sqrt{6}$).</p>
+
+    <hr style="border: 0; border-top: 1px solid #ccc; margin: 15px 0;">
+
+    <!-- Caso c -->
+    <p><strong>c) Para $x_0 = 1$:</strong></p>
+    <p>$$ x_1 = 1 - \frac{(1)^3 - 6(1)}{3(1)^2 - 6} = 1 - \frac{-5}{-3} = -0.666667 $$</p>
+    <p>$$ x_2 = -0.666667 - \frac{(-0.666667)^3 - 6(-0.666667)}{3(-0.666667)^2 - 6} = -0.666667 - \frac{3.703704}{-4.666667} = 0.126984 $$</p>
+    <p>$$ x_3 = 0.126984 - \frac{(0.126984)^3 - 6(0.126984)}{3(0.126984)^2 - 6} = 0.126984 - \frac{-0.759856}{-5.951625} = -0.000688 $$</p>
+    <p>$$ x_4 = -0.000688 - \frac{(-0.000688)^3 - 6(-0.000688)}{3(-0.000688)^2 - 6} \approx -0.000688 - \frac{0.004128}{-6.000000} = 0.000000 $$</p>
+    <p><em>Convergencia:</em> El valor se estabiliza en la raíz central del origen $x = 0$.</p>
+</div>
+
+        </div>
+
+        <div class="ejercicio-bloque interactable">
+            <!-- Ejercicio 10 -->
+<h3 class="ejercicio-titulo">Ejercicio 10 </h3>
+<div class="ejercicio-contenido">
+    <p>Encontrar la raíz de la función evaluando en radianes:</p>
+    <p>$$ f(x) = \sin(\sqrt{x}) = 0 $$</p>
+
+    <p><strong>Paso 1 (Derivada):</strong> Calculamos la primera derivada $f'(x)$ aplicando la regla de la cadena para usarla en la fórmula $x_{i+1} = x_i - \frac{f(x_i)}{f'(x_i)}$.</p>
+    <p>$$ f'(x) = \frac{\cos(\sqrt{x})}{2\sqrt{x}} $$</p>
+
+    <p><strong>Datos iniciales:</strong> Dado que no se especifica un valor inicial $x_0$, propondremos $x_0 = 10$ (un valor muy cercano a la raíz real $\pi^2$) para evitar números imaginarios en la raíz y asegurar una convergencia rápida. Se iterará hasta alcanzar la estabilidad.</p>
+
+    <p><strong>Iteración 1:</strong></p>
+    <p>$$ f(10) = \sin(\sqrt{10}) = \sin(3.162277) = -0.020677 $$</p>
+    <p>$$ f'(10) = \frac{\cos(\sqrt{10})}{2\sqrt{10}} = \frac{\cos(3.162277)}{6.324555} = -0.158080 $$</p>
+    <p>$$ x_1 = 10 - \frac{-0.020677}{-0.158080} = 9.869199 $$</p>
+
+    <p><strong>Iteración 2:</strong></p>
+    <p>$$ f(9.869199) = \sin(\sqrt{9.869199}) = 0.000064 $$</p>
+    <p>$$ f'(9.869199) = \frac{\cos(\sqrt{9.869199})}{2\sqrt{9.869199}} = -0.159158 $$</p>
+    <p>$$ x_2 = 9.869199 - \frac{0.000064}{-0.159158} = 9.869601 $$</p>
+
+    <p><strong>Iteración 3:</strong></p>
+    <p>$$ f(9.869601) = \sin(\sqrt{9.869601}) = 0.0000005 $$</p>
+    <p>$$ f'(9.869601) = \frac{\cos(\sqrt{9.869601})}{2\sqrt{9.869601}} = -0.159155 $$</p>
+    <p>$$ x_3 = 9.869601 - \frac{0.0000005}{-0.159155} = 9.869604 $$</p>
+
+    <p><strong>Iteración 4:</strong></p>
+    <p>$$ f(9.869604) = \sin(\sqrt{9.869604}) \approx 0.000000 $$</p>
+    <p>$$ f'(9.869604) = \frac{\cos(\sqrt{9.869604})}{2\sqrt{9.869604}} \approx -0.159155 $$</p>
+    <p>$$ x_4 = 9.869604 - 0 = 9.869604 $$</p>
+    
+    <p><strong>Solución final:</strong> En la iteración 4, el valor converge por completo y se mantiene estable. La raíz aproximada es $x \approx 9.869604$ (cuyo valor exacto matemático corresponde a $\pi^2$).</p>
+</div>
+
+        </div>
+
+         <div class="ejercicio-bloque interactable">
+            <!-- Ejercicio 11 -->
+             <h3 class="ejercicio-titulo">Ejercicio 11 </h3>
+<div class="ejercicio-contenido">
+    <p>Dada la función $f(x) = x^5 - x^4 + 2x^3 - 3x^2 + x - 4$:</p>
+    
+    <p><strong>a) Obtener $f'(x)$:</strong></p>
+    <p>$$ f'(x) = 5x^4 - 4x^3 + 6x^2 - 6x + 1 $$</p>
+    
+    <p><strong>b) Construye explícitamente la ecuación iterativa de Newton-Raphson:</strong></p>
+    <p>La fórmula general es $x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}$. Sustituyendo nuestras funciones, la ecuación explícita es:</p>
+    <p>$$ x_{n+1} = x_n - \frac{x_n^5 - x_n^4 + 2x_n^3 - 3x_n^2 + x_n - 4}{5x_n^4 - 4x_n^3 + 6x_n^2 - 6x_n + 1} $$</p>
+    
+    <p><strong>c) y d) Evaluar con 6 cifras decimales a partir de $x_0 = 1.5$ y obtener el error relativo aproximado:</strong></p>
+    <p>El error relativo aproximado se calcula como $E_r = \left| \frac{x_{n+1} - x_n}{x_{n+1}} \right| \times 100$.</p>
+    
+    <p><strong>Iteración 1:</strong></p>
+    <p>$$ x_0 = 1.5 $$</p>
+    <p>$$ f(1.5) = (1.5)^5 - (1.5)^4 + 2(1.5)^3 - 3(1.5)^2 + 1.5 - 4 = 0.031250 $$</p>
+    <p>$$ f'(1.5) = 5(1.5)^4 - 4(1.5)^3 + 6(1.5)^2 - 6(1.5) + 1 = 17.312500 $$</p>
+    <p>$$ x_1 = 1.5 - \frac{0.031250}{17.312500} = 1.498195 $$</p>
+    <p>$$ Error \ relativo = \left| \frac{1.498195 - 1.5}{1.498195} \right| \times 100 = 0.120478\% $$</p>
+
+    <p><strong>Iteración 2:</strong></p>
+    <p>$$ f(1.498195) \approx 0.000003 $$</p>
+    <p>$$ f'(1.498195) \approx 17.220189 $$</p>
+    <p>$$ x_2 = 1.498195 - \frac{0.000003}{17.220189} = 1.498195 $$</p>
+    <p>$$ Error \ relativo \approx 0.000000\% $$</p>
+
+    <p><strong>Solución final:</strong> Con 6 cifras decimales, la raíz converge rápidamente en $x \approx 1.498195$[cite: 16].</p>
+</div>
+
+        </div>
+
+         <div class="ejercicio-bloque interactable">
+            <!-- Ejercicio 12 -->
+             <h3 class="ejercicio-titulo">Ejercicio 12 </h3>
+<div class="ejercicio-contenido">
+    <p>Dada la función $f(x) = 2x\cos(2x) - (x-2)^2$:</p>
+    
+    <p><strong>a) y b) Encontrar ambas raíces (en los intervalos $2 < x < 3$ y $3 < x < 4$) continuando hasta que $|x_{n+1} - x_n| \le 10^{-6}$.</strong></p>
+    <p>Calculamos primero la derivada usando la regla del producto y la regla de la cadena. (Los valores se evaluarán en radianes).</p>
+    <p>$$ f'(x) = 2\cos(2x) - 4x\sin(2x) - 2(x-2) $$</p>
+    
+    <p><strong>Búsqueda de la Primera Raíz ($2 < x < 3$):</strong><br>
+    Proponemos un valor inicial $x_0 = 2.5$.</p>
+    <p>$$ x_0 = 2.5 $$</p>
+    <p>$$ x_1 = 2.5 - \frac{f(2.5)}{f'(2.5)} = 2.5 - \frac{1.168311}{9.156566} = 2.372407 \quad (|x_1 - x_0| = 0.127593) $$</p>
+    <p>$$ x_2 = 2.372407 - \frac{f(2.372407)}{f'(2.372407)} = 2.372407 - \frac{0.015796}{8.804918} = 2.370613 \quad (|x_2 - x_1| = 0.001794) $$</p>
+    <p>$$ x_3 = 2.370613 - \frac{f(2.370613)}{f'(2.370613)} = 2.370613 - \frac{0.000041}{8.795101} = 2.370608 \quad (|x_3 - x_2| = 0.000005) $$</p>
+    <p>$$ x_4 = 2.370608 - \frac{f(2.370608)}{f'(2.370608)} = 2.370608 \quad (|x_4 - x_3| < 10^{-6}) $$</p>
+    <p><strong>La primera raíz es $x \approx 2.370608$.</strong></p>
+
+    <p><strong>Búsqueda de la Segunda Raíz ($3 < x < 4$):</strong><br>
+    Proponemos un valor inicial $x_0 = 3.5$.</p>
+    <p>$$ x_0 = 3.5 $$</p>
+    <p>$$ x_1 = 3.5 - \frac{f(3.5)}{f'(3.5)} = 3.5 - \frac{3.027341}{-10.689945} = 3.783191 \quad (|x_1 - x_0| = 0.283191) $$</p>
+    <p>$$ x_2 = 3.783191 - \frac{f(3.783191)}{f'(3.783191)} = 3.783191 - \frac{-1.108253}{-17.571432} = 3.720120 \quad (|x_2 - x_1| = 0.063071) $$</p>
+    <p>$$ x_3 = 3.720120 - \frac{f(3.720120)}{f'(3.720120)} = 3.720120 - \frac{0.228994}{-16.027814} = 3.734407 \quad (|x_3 - x_2| = 0.014287) $$</p>
+    <p>$$ x_4 = 3.734407 - \frac{f(3.734407)}{f'(3.734407)} = 3.734407 - \frac{0.013289}{-16.318451} = 3.735221 \quad (|x_4 - x_3| = 0.000814) $$</p>
+    <p>$$ x_5 = 3.735221 - \frac{f(3.735221)}{f'(3.735221)} = 3.735221 - \frac{0.000098}{-16.335324} = 3.735215 \quad (|x_5 - x_4| = 0.000006) $$</p>
+    <p>$$ x_6 = 3.735215 - \frac{f(3.735215)}{f'(3.735215)} = 3.735215 \quad (|x_6 - x_5| < 10^{-6}) $$</p>
+    <p><strong>La segunda raíz es $x \approx 3.735215$.</strong></p>
+</div>
+
+        </div>
+
+         <div class="ejercicio-bloque interactable">
+            <!-- Ejercicio 13 -->
+             <h3 class="ejercicio-titulo">Ejercicio 13 </h3>
+<div class="ejercicio-contenido">
+    <p>Dada la siguiente función, encontrar la única raíz negativa y las primeras cuatro raíces positivas:</p>
+    <p>$$ f(x) = \ln(x^2 + 1) - e^{0.4x}\cos(\pi x) $$</p>
+    
+    <p><strong>Paso 1 (Derivada):</strong> Aplicamos la regla de la cadena y del producto para obtener la derivada $f'(x)$, recordando evaluar las funciones trigonométricas en radianes.</p>
+    <p>$$ f'(x) = \frac{2x}{x^2 + 1} - 0.4e^{0.4x}\cos(\pi x) + \pi e^{0.4x}\sin(\pi x) $$</p>
+    
+    <p><strong>Condición:</strong> Tolerancia de $10^{-6}$, lo que implica buscar la convergencia estable de al menos 6 cifras decimales.</p>
+
+    <p><strong>a) La única raíz negativa:</strong></p>
+    <p>Proponemos un valor inicial $x_0 = -0.5$.</p>
+    <p>$$ x_1 = -0.5 - \frac{0.223143}{-3.372132} = -0.433827 $$</p>
+    <p>$$ x_2 = -0.433827 - \frac{0.001062}{-3.376823} = -0.434142 $$</p>
+    <p>$$ x_3 = -0.434142 - \frac{0.000003}{-3.377033} = -0.434143 \quad (|x_3 - x_2| < 10^{-6}) $$</p>
+    <p>La única raíz negativa converge en <strong>$x \approx -0.434143$</strong>.</p>
+
+    <p><strong>b) Las primeras cuatro raíces positivas:</strong></p>
+
+    <p><strong>Raíz 1:</strong> Proponemos $x_0 = 0.5$.</p>
+    <p>$$ x_1 = 0.5 - \frac{0.223143}{4.637508} = 0.451881 $$</p>
+    <p>$$ x_2 = 0.451881 - \frac{0.005573}{4.545892} = 0.450655 $$</p>
+    <p>$$ x_3 = 0.450655 - \frac{-0.000009}{4.543501} = 0.450657 \quad (|x_3 - x_2| < 10^{-6}) $$</p>
+    <p>Convergencia en <strong>$x \approx 0.450657$</strong>.</p>
+
+    <p><strong>Raíz 2:</strong> Proponemos $x_0 = 1.7$.</p>
+    <p>$$ x_1 = 1.7 - \frac{0.198305}{-4.606900} = 1.743044 $$</p>
+    <p>$$ x_2 = 1.743044 - \frac{0.008064}{-4.621213} = 1.744789 $$</p>
+    <p>$$ x_3 = 1.744789 - \frac{-0.000009}{-4.621743} = 1.744787 \quad (|x_3 - x_2| < 10^{-6}) $$</p>
+    <p>Convergencia en <strong>$x \approx 1.744787$</strong>.</p>
+
+    <p><strong>Raíz 3:</strong> Proponemos $x_0 = 2.2$.</p>
+    <p>$$ x_1 = 2.2 - \frac{-0.186638}{4.417246} = 2.242252 $$</p>
+    <p>$$ x_2 = 2.242252 - \frac{0.016335}{4.151740} = 2.238317 $$</p>
+    <p>$$ x_3 = 2.238317 - \frac{-0.000012}{4.177265} = 2.238320 \quad (|x_3 - x_2| < 10^{-6}) $$</p>
+    <p>Convergencia en <strong>$x \approx 2.238320$</strong>.</p>
+
+    <p><strong>Raíz 4:</strong> Proponemos $x_0 = 3.7$.</p>
+    <p>$$ x_1 = 3.7 - \frac{0.108608}{-11.688846} = 3.709291 $$</p>
+    <p>$$ x_2 = 3.709291 - \frac{-0.003006}{-11.966904} = 3.709040 $$</p>
+    <p>$$ x_3 = 3.709040 - \frac{0.000011}{-11.974443} = 3.709041 \quad (|x_3 - x_2| < 10^{-6}) $$</p>
+    <p>Convergencia en <strong>$x \approx 3.709041$</strong>.</p>
+</div>
+
+        </div>
+
+        <div class="ejercicio-bloque interactable">
+            <!-- Ejercicio 14 -->
+             <h3 class="ejercicio-titulo">Ejercicio 14</h3>
+<div class="ejercicio-contenido">
+    <p>Dada la función y la condición de paro $|x_{n+1} - x_n| < 10^{-6}$:</p>
+    <p>$$ f(x) = (x-2)^3(x+1) $$</p>
+
+    <p><strong>Paso 1 (Derivada):</strong> Aplicamos la regla del producto para obtener la derivada $f'(x)$.</p>
+    <p>$$ f'(x) = 3(x-2)^2(x+1) + (x-2)^3(1) $$</p>
+    <p>Factorizando $(x-2)^2$:</p>
+    <p>$$ f'(x) = (x-2)^2 [3(x+1) + (x-2)] = (x-2)^2 (4x + 1) $$</p>
+    
+    <hr style="border: 0; border-top: 1px solid #ccc; margin: 15px 0;">
+
+    <p><strong>Evaluación con $X_0 = -1.5$ (Raíz en $x = -1$):</strong></p>
+    <p>$$ x_1 = -1.5 - \frac{(-1.5-2)^3(-1.5+1)}{(-1.5-2)^2(4(-1.5)+1)} = -1.5 - \frac{21.4375}{-61.25} = -1.150000 $$</p>
+    <p>$$ x_2 = -1.15 - \frac{4.688381}{-35.721000} = -1.018750 $$</p>
+    <p>$$ x_3 = -1.018750 - \frac{0.515854}{-28.022010} = -1.000341 $$</p>
+    <p>$$ x_4 = -1.000341 - \frac{0.009207}{-27.024552} = -1.000000 $$</p>
+    <p>$$ x_5 = -1.000000 - \frac{0}{-27.000000} = -1.000000 $$</p>
+    <p><em>Convergencia rápida:</em> Se alcanza la tolerancia en <strong>5 iteraciones</strong>.</p>
+
+    <p><strong>Evaluación con $X_0 = 2.5$ (Raíz en $x = 2$):</strong></p>
+    <p>$$ x_1 = 2.5 - \frac{(2.5-2)^3(2.5+1)}{(2.5-2)^2(4(2.5)+1)} = 2.5 - \frac{0.4375}{2.75} = 2.340909 $$</p>
+    <p>$$ x_2 = 2.340909 - \frac{0.132338}{1.204452} = 2.231035 $$</p>
+    <p>$$ x_3 = 2.231035 - \frac{0.039603}{0.530379} = 2.156366 $$</p>
+    <p>$$ x_4 = 2.156366 - \frac{0.012025}{0.235552} = 2.105316 $$</p>
+    <p><em>(Resumen del progreso):</em> El avance es muy lento. La distancia al valor real se reduce solo en un factor aproximado de $2/3$ por cada paso. Para cumplir con la tolerancia estricta de $< 10^{-6}$, el método requiere aproximadamente <strong>33 iteraciones</strong> hasta alcanzar $x \approx 2.000000$.</p>
+
+    <hr style="border: 0; border-top: 1px solid #ccc; margin: 15px 0;">
+
+    <p><strong>a) Compare la cantidad de iteraciones y explique por qué la convergencia es diferente para cada caso:</strong></p>
+    <p>Para $X_0 = -1.5$, el método requirió solo 5 iteraciones, mostrando una convergencia muy veloz. Para $X_0 = 2.5$, el método requirió más de 30 iteraciones. La diferencia ocurre porque el método de Newton-Raphson tiene convergencia <em>cuadrática</em> (muy rápida) cuando se acerca a una raíz simple, pero su eficiencia se degrada a convergencia <em>lineal</em> (lenta) cuando se aproxima a una raíz múltiple.</p>
+
+    <p><strong>b) Determine la multiplicidad de las raíces y explique cómo influye en la velocidad de convergencia[cite: 24]:</strong></p>
+    <ul>
+        <li>La raíz $x = -1$ tiene <strong>multiplicidad 1</strong> (es una raíz simple, ya que el término $(x+1)$ está elevado a la potencia 1). Esto permite que el denominador $f'(x)$ no se acerque a cero al mismo ritmo que el numerador, garantizando la velocidad cuadrática óptima.</li>
+        <li>La raíz $x = 2$ tiene <strong>multiplicidad 3</strong> (ya que el término es $(x-2)^3$). Al acercarse a esta raíz, tanto la función $f(x)$ como su derivada $f'(x)$ tienden a cero simultáneamente (comportamiento $0/0$). Esta indeterminación frena drásticamente el algoritmo, haciendo que la velocidad de convergencia se vuelva lineal y requiera muchas más iteraciones para lograr la misma precisión.</li>
+    </ul>
+</div>
+        </div>
+
+                <div class="ejercicio-bloque interactable">
+            <!-- Ejercicio 15 -->
+<h3 class="ejercicio-titulo">Ejercicio 15 </h3>
+<div class="ejercicio-contenido">
+    <p>Dada la ecuación $e^x - 3x^2 = 0$:</p>
+    
+    <p><strong>Paso 1 (Derivada):</strong> Definimos la función $f(x)$ y calculamos su primera derivada $f'(x)$ para aplicar la fórmula $x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}$.</p>
+    <p>$$f(x) = e^x - 3x^2$$</p>
+    <p>$$f'(x) = e^x - 6x$$</p>
+
+    <hr style="border: 0; border-top: 1px solid #ccc; margin: 15px 0;">
+
+    <p><strong>c) Justifique la elección de los valores iniciales:</strong></p>
+    <p>Para elegir los valores iniciales, evaluamos los extremos de cada intervalo para confirmar el cambio de signo (teorema de Bolzano):</p>
+    <ul>
+        <li>En el intervalo $0 < x < 1$: $f(0) = e^0 - 0 = 1$ (positivo) y $f(1) = e^1 - 3 \approx -0.2817$ (negativo). Como el valor en $1$ está más cerca del cero, elegimos <strong>$x_0 = 1$</strong> para una convergencia más rápida.</li>
+        <li>En el intervalo $3 < x < 5$: $f(3) = e^3 - 27 \approx -6.914$ (negativo) y $f(5) = e^5 - 75 \approx 73.413$ (positivo). Elegiremos un valor intermedio, por ejemplo <strong>$x_0 = 4$</strong>, para balancear la distancia en el intervalo.</li>
+    </ul>
+
+    <hr style="border: 0; border-top: 1px solid #ccc; margin: 15px 0;">
+
+    <p><strong>a) Determine una raíz en el intervalo $0 < x < 1$:</strong></p>
+    <p>Iniciando con $x_0 = 1$ y aplicando la condición de paro $\vert{}X_{n+1} - X_n\vert{} < 10^{-5}$:</p>
+    <p>$$x_1 = 1 - \frac{e^1 - 3(1)^2}{e^1 - 6(1)} = 1 - \frac{-0.281718}{-3.281718} = 0.914155 \quad (\vert{}x_1 - x_0\vert{} = 0.085845)$$</p>
+    <p>$$x_2 = 0.914155 - \frac{-0.012359}{-2.990263} = 0.910022 \quad (\vert{}x_2 - x_1\vert{} = 0.004133)$$</p>
+    <p>$$x_3 = 0.910022 - \frac{-0.000043}{-2.975755} = 0.910008 \quad (\vert{}x_3 - x_2\vert{} = 0.000014)$$</p>
+    <p>$$x_4 = 0.910008 - \frac{0.000000}{-2.975698} = 0.910008 \quad (\vert{}x_4 - x_3\vert{} = 0.000000 < 10^{-5})$$</p>
+    <p><strong>La raíz en el primer intervalo es $x \approx 0.910008$.</strong></p>
+
+    <hr style="border: 0; border-top: 1px solid #ccc; margin: 15px 0;">
+
+    <p><strong>b) Otra raíz en $3 < x < 5$:</strong></p>
+    <p>Iniciando con $x_0 = 4$ y aplicando la condición de paro $\vert{}X_{n+1} - X_n\vert{} < 10^{-5}$
+                </div>
+                </div>
+
+                 <div class="ejercicio-bloque interactable">
+            <!-- Ejercicio 16 -->
+             <h3 class="ejercicio-titulo">Ejercicio 16</h3>
+<div class="ejercicio-contenido">
+    <p>Dada la función:</p>
+    <p>$$ f(x) = \tanh(x^2 - 9) $$</p>
+    
+    <p><strong>Paso 1 (Derivada):</strong> Aplicamos la regla de la cadena para obtener la derivada $f'(x)$, recordando que la derivada de $\tanh(u)$ es $\text{sech}^2(u) \cdot u' = (1 - \tanh^2(u)) \cdot u'$.</p>
+    <p>$$ f'(x) = 2x \cdot \text{sech}^2(x^2 - 9) = 2x (1 - \tanh^2(x^2 - 9)) $$</p>
+    <p>La fórmula de Newton-Raphson queda expresada como:</p>
+    <p>$$ x_{n+1} = x_n - \frac{\tanh(x_n^2 - 9)}{2x_n \text{sech}^2(x_n^2 - 9)} $$</p>
+    
+    <hr style="border: 0; border-top: 1px solid #ccc; margin: 15px 0;">
+
+    <p><strong>a) Realice un mínimo de 4 iteraciones y documente matemáticamente por qué deja de continuar:</strong></p>
+    <p>Supongamos que elegimos un valor inicial desacertado, por ejemplo, <strong>$x_0 = 1.0$</strong>:</p>
+    <ul>
+        <li><strong>Iteración 1:</strong> $x_1 = 1.0 - \frac{\tanh(1^2 - 9)}{2(1)\text{sech}^2(1^2 - 9)} = 1.0 - \frac{\tanh(-8)}{2\text{sech}^2(-8)}$<br>
+        Como $\tanh(-8) \approx -1$ y $\text{sech}^2(-8) \approx 0$, el cociente se indefine o genera un valor extremadamente grande (ej. $x_1 \approx -2.5 \times 10^{6}$).</li>
+        <li><strong>Iteración 2:</strong> Al evaluar $x_1$, la función hiperbólica satura sus valores extremos y la derivada $f'(x)$ se vuelve prácticamente cero ($f'(x) \to 0$). El denominador de la fórmula de Newton-Raphson colapsa a cero, provocando una división por cero o un desbordamiento numérico (overflow).</li>
+    </ul>
+    <p><strong>Conclusión matemática:</strong> El proceso deja de continuar porque la derivada se anula o diverge drásticamente debido a las propiedades de saturación de la función tangente hiperbólica cuando nos alejamos de la vecindad de la raíz.</p>
+
+    <hr style="border: 0; border-top: 1px solid #ccc; margin: 15px 0;">
+
+    <p><strong>b) Hasta que converge en raíz positiva:</strong></p>
+    <p>Sabemos que la raíz positiva ocurre cuando el argumento de la función se anula: $x^2 - 9 = 0 \Rightarrow x = 3$. Si proponemos un valor inicial cercano, por ejemplo <strong>$x_0 = 3.2$</strong>:</p>
+    <p>$$ x_1 = 3.2 - \frac{\tanh((3.2)^2 - 9)}{2(3.2)\text{sech}^2((3.2)^2 - 9)} = 3.2 - \frac{\tanh(1.24)}{6.4\text{sech}^2(1.24)} = 3.2 - \frac{0.8443}{6.4(0.2872)} = 3.2 - 0.4591 = 2.7409 $$</p>
+    <p>$$ x_2 = 2.7409 - \frac{\tanh(-1.487)}{5.4818\text{sech}^(-1.487)} = 3.0125 $$</p>
+    <p>$$ x_3 = 3.0125 - \frac{\tanh(0.075)}{6.0250\text{sech}^2(0.075)} = 2.9999 $$</p>
+    <p>$$ x_4 = 3.0000 $$</p>
+    <p>El método converge exitosamente en la raíz positiva exacta <strong>$x = 3$</strong>.</p>
+
+    <hr style="border: 0; border-top: 1px solid #ccc; margin: 15px 0;">
+
+    <p><strong>c) Explique qué sucede con la derivada cuando las iteraciones se alejan de la raíz:</strong></p>
+    <p>Cuando las iteraciones se alejan de la raíz ($x = 3$ o $x = -3$), el término $x^2 - 9$ crece en valor absoluto. Debido a esto, la función $\text{sech}^2(x^2 - 9)$ decae exponencialmente hacia cero de forma muy agresiva. Por lo tanto, <strong>la derivada $f'(x) = 2x \cdot \text{sech}^2(x^2 - 9)$ tiende rápidamente a cero</strong>, provocando que los incrementos de la fórmula de Newton-Raphson se vuelvan infinitos o inestables.</p>
+
+    <hr style="border: 0; border-top: 1px solid #ccc; margin: 15px 0;">
+
+    <p><strong>d) Proponer un valor inicial que permita obtener una convergencia satisfactoria:</strong></p>
+    <p>Para asegurar una convergencia rápida y evitar las zonas de saturación o derivada nula, se debe seleccionar un valor inicial muy próximo a la raíz positiva buscada ($x = 3$). Un valor inicial ideal y altamente satisfactorio es <strong>$x_0 = 3.1$</strong> o <strong>$x_0 = 3.2$</strong>.</p>
+</div>
+                </div>
+
+
+
+
+
+
+
+
+
+        <!-- {% elif metodo == 'secante' %}-->
             <!-- Aquí tu contenido de secante -->
+
+
+
+
 
         {% elif metodo == 'biseccion' %}
             <!-- Aquí tu contenido de bisección -->
+            <h1 class="metodo-titulo">Bisección</h1>
+            <div class="ejercicio-bloque interactable">
+                <h3 class="ejercicio-titulo">Ejercicio 1</h3>
+<div class="ejercicio-contenido">
+    <p>Encontrar la raíz de la función en el intervalo $[0, 2]$:</p>
+    <p>$$ f(x) = x^2 - x - 1 $$</p>
+    
+    <p><strong>Evaluación inicial:</strong> $a = 0$, $b = 2$. <br> 
+    $f(0) = (0)^2 - (0) - 1 = -1$ <br> 
+    $f(2) = (2)^2 - (2) - 1 = 1$ <br>
+    Hay cambio de signo, la raíz está en $[0, 2]$.</p>
+    
+    <p><strong>Iteración 1:</strong></p>
+    <p>$$ x_1 = \frac{0 + 2}{2} = 1.0 $$</p>
+    <p>$$ f(1.0) = (1.0)^2 - 1.0 - 1 = -1 $$</p>
+    <p>Como $f(x_1)$ es negativo, sustituye a $a$. El nuevo intervalo es $[1.0, 2]$.</p>
+
+    <p><strong>Iteración 2:</strong></p>
+    <p>$$ x_2 = \frac{1.0 + 2}{2} = 1.5 $$</p>
+    <p>$$ Error = \left| \frac{1.5 - 1.0}{1.5} \right| \times 100 = 33.33\% $$</p>
+    <p>$$ f(1.5) = (1.5)^2 - 1.5 - 1 = -0.25 $$</p>
+    <p>Como $f(x_2)$ es negativo, sustituye a $a$. El nuevo intervalo es $[1.5, 2]$.</p>
+
+    <p><strong>Iteración 3:</strong></p>
+    <p>$$ x_3 = \frac{1.5 + 2}{2} = 1.75 $$</p>
+    <p>$$ Error = \left| \frac{1.75 - 1.5}{1.75} \right| \times 100 = 14.28\% $$</p>
+    <p>$$ f(1.75) = (1.75)^2 - 1.75 - 1 = 0.3125 $$</p>
+    <p>Como $f(x_3)$ es positivo, sustituye a $b$. El nuevo intervalo es $[1.5, 1.75]$.</p>
+
+    <p><strong>Iteración 4:</strong></p>
+    <p>$$ x_4 = \frac{1.5 + 1.75}{2} = 1.625 $$</p>
+    <p>$$ Error = \left| \frac{1.625 - 1.75}{1.625} \right| \times 100 = 7.69\% $$</p>
+    <p>$$ f(1.625) = (1.625)^2 - 1.625 - 1 = 0.015625 $$</p>
+    
+    <p><strong>Solución final:</strong> Como en la iteración 4 el error es $7.69\%$ (menor a la tolerancia del $8\%$), la raíz aproximada es $x = 1.625$.</p>
+</div>
+
+            </div>
+
+            <div class="ejercicio-bloque interactable">
+                <!-- Ejercicio 2 -->
+<h3 class="ejercicio-titulo">Ejercicio 2</h3>
+<div class="ejercicio-contenido">
+    <p>Encontrar la raíz de la función en el intervalo $[1, 2]$ con tolerancia de $1/16$:</p>
+    <p>$$ f(x) = x^3 - x^2 - 1 $$</p>
+    
+    <p><strong>Evaluación inicial:</strong> $a = 1$, $b = 2$. <br> 
+    $f(1) = (1)^3 - (1)^2 - 1 = -1$ <br> 
+    $f(2) = (2)^3 - (2)^2 - 1 = 3$ <br>
+    Hay cambio de signo, la raíz está en $[1, 2]$.</p>
+    
+    <p><strong>Iteración 1:</strong></p>
+    <p>$$ x_1 = \frac{1 + 2}{2} = 1.5 $$</p>
+    <p>$$ f(1.5) = (1.5)^3 - (1.5)^2 - 1 = 0.125 $$</p>
+    <p>Como $f(x_1)$ es positivo, sustituye a $b$. El nuevo intervalo es $[1, 1.5]$.</p>
+
+    <p><strong>Iteración 2:</strong></p>
+    <p>$$ x_2 = \frac{1 + 1.5}{2} = 1.25 $$</p>
+    <p>$$ Error = \left| \frac{1.25 - 1.5}{1.25} \right| \times 100 = 20\% $$</p>
+    <p>$$ f(1.25) = (1.25)^3 - (1.25)^2 - 1 = -0.6093 $$</p>
+    <p>Como $f(x_2)$ es negativo, sustituye a $a$. El nuevo intervalo es $[1.25, 1.5]$.</p>
+
+    <p><strong>Iteración 3:</strong></p>
+    <p>$$ x_3 = \frac{1.25 + 1.5}{2} = 1.375 $$</p>
+    <p>$$ Error = \left| \frac{1.375 - 1.25}{1.375} \right| \times 100 = 9.09\% $$</p>
+    <p>$$ f(1.375) = (1.375)^3 - (1.375)^2 - 1 = -0.2910 $$</p>
+    <p>Como $f(x_3)$ es negativo, sustituye a $a$. El nuevo intervalo es $[1.375, 1.5]$.</p>
+
+    <p><strong>Iteración 4:</strong></p>
+    <p>$$ x_4 = \frac{1.375 + 1.5}{2} = 1.4375 $$</p>
+    <p>$$ Error = \left| \frac{1.4375 - 1.375}{1.4375} \right| \times 100 = 4.34\% $$</p>
+    <p>$$ f(1.4375) = (1.4375)^3 - (1.4375)^2 - 1 = -0.0957 $$</p>
+    
+    <p><strong>Solución final:</strong> En la iteración 4, el tamaño del intervalo (error absoluto) llega exactamente a la tolerancia requerida de $1/16 = 0.0625$. La raíz aproximada es $x = 1.4375$.</p>
+</div>
+            </div>
+ <div class="ejercicio-bloque interactable">
+<!-- Ejercicio 3 -->
+<h3 class="ejercicio-titulo">Ejercicio 3</h3>
+<div class="ejercicio-contenido">
+    <p>Encontrar la raíz de la función en el intervalo $[2, 3]$ con tolerancia de $1/16$ (4 iteraciones):</p>
+    <p>$$ f(x) = x^2 - 5 $$</p>
+    
+    <p><strong>Evaluación inicial:</strong> $a = 2$, $b = 3$. <br> 
+    $f(2) = (2)^2 - 5 = -1$ <br> 
+    $f(3) = (3)^2 - 5 = 4$ <br>
+    Hay cambio de signo, la raíz está en $[2, 3]$.</p>
+    
+    <p><strong>Iteración 1:</strong></p>
+    <p>$$ x_1 = \frac{2 + 3}{2} = 2.5 $$</p>
+    <p>$$ f(2.5) = (2.5)^2 - 5 = 1.25 $$</p>
+    <p>Como $f(x_1)$ es positivo, sustituye a $b$. El nuevo intervalo es $[2, 2.5]$.</p>
+
+    <p><strong>Iteración 2:</strong></p>
+    <p>$$ x_2 = \frac{2 + 2.5}{2} = 2.25 $$</p>
+    <p>$$ Error = \left| \frac{2.25 - 2.5}{2.25} \right| \times 100 = 11.11\% $$</p>
+    <p>$$ f(2.25) = (2.25)^2 - 5 = 0.0625 $$</p>
+    <p>Como $f(x_2)$ es positivo, sustituye a $b$. El nuevo intervalo es $[2, 2.25]$.</p>
+
+    <p><strong>Iteración 3:</strong></p>
+    <p>$$ x_3 = \frac{2 + 2.25}{2} = 2.125 $$</p>
+    <p>$$ Error = \left| \frac{2.125 - 2.25}{2.125} \right| \times 100 = 5.88\% $$</p>
+    <p>$$ f(2.125) = (2.125)^2 - 5 = -0.4843 $$</p>
+    <p>Como $f(x_3)$ es negativo, sustituye a $a$. El nuevo intervalo es $[2.125, 2.25]$.</p>
+
+    <p><strong>Iteración 4:</strong></p>
+    <p>$$ x_4 = \frac{2.125 + 2.25}{2} = 2.1875 $$</p>
+    <p>$$ Error = \left| \frac{2.1875 - 2.125}{2.1875} \right| \times 100 = 2.85\% $$</p>
+    <p>$$ f(2.1875) = (2.1875)^2 - 5 = -0.2148 $$</p>
+    
+    <p><strong>Solución final:</strong> Tras 4 iteraciones, se ha alcanzado la tolerancia absoluta de $1/16 = 0.0625$. La raíz aproximada es $x = 2.1875$.</p>
+</div>
+ </div>
+ <div class="ejercicio-bloque interactable">
+<!-- Ejercicio 4 -->
+<h3 class="ejercicio-titulo">Ejercicio 4</h3>
+<div class="ejercicio-contenido">
+    <p>Encontrar la raíz de la función en el intervalo $[-1.9, -1.7]$ para 7 iteraciones:</p>
+    <p>$$ f(x) = \cos(0.5 e^{-x}) + x^2 - 2 $$</p>
+    
+    <p><strong>Evaluación inicial (Usando radianes):</strong> $a = -1.9$, $b = -1.7$. <br> 
+    $f(-1.9) \approx 0.632$ <br> 
+    $f(-1.7) \approx -0.026$ <br>
+    Hay cambio de signo, la raíz está en $[-1.9, -1.7]$.</p>
+    
+    <p><strong>Iteración 1:</strong></p>
+    <p>$$ x_1 = \frac{-1.9 + (-1.7)}{2} = -1.8 $$</p>
+    <p>$$ f(-1.8) = \cos(0.5 e^{1.8}) + (-1.8)^2 - 2 = 0.247 $$</p>
+    <p>$(+)$. Nuevo intervalo: $[-1.8, -1.7]$.</p>
+
+    <p><strong>Iteración 2:</strong></p>
+    <p>$$ x_2 = \frac{-1.8 + (-1.7)}{2} = -1.75 $$</p>
+    <p>$$ Error = 2.85\% \quad | \quad f(-1.75) = 0.099 $$</p>
+    <p>$(+)$. Nuevo intervalo: $[-1.75, -1.7]$.</p>
+
+    <p><strong>Iteración 3:</strong></p>
+    <p>$$ x_3 = \frac{-1.75 + (-1.7)}{2} = -1.725 $$</p>
+    <p>$$ Error = 1.44\% \quad | \quad f(-1.725) = 0.031 $$</p>
+    <p>$(+)$. Nuevo intervalo: $[-1.725, -1.7]$.</p>
+
+    <p><strong>Iteración 4:</strong></p>
+    <p>$$ x_4 = \frac{-1.725 + (-1.7)}{2} = -1.7125 $$</p>
+    <p>$$ Error = 0.72\% \quad | \quad f(-1.7125) = 0.0016 $$</p>
+    <p>$(+)$. Nuevo intervalo: $[-1.7125, -1.7]$.</p>
+    
+    <p><strong>Iteración 5:</strong></p>
+    <p>$$ x_5 = \frac{-1.7125 + (-1.7)}{2} = -1.70625 $$</p>
+    <p>$$ Error = 0.36\% \quad | \quad f(-1.70625) = -0.0138 $$</p>
+    <p>$(-)$. Nuevo intervalo: $[-1.7125, -1.70625]$.</p>
+
+    <p><strong>Iteración 6:</strong></p>
+    <p>$$ x_6 = \frac{-1.7125 + (-1.70625)}{2} = -1.709375 $$</p>
+    <p>$$ Error = 0.18\% \quad | \quad f(-1.709375) = -0.006 $$</p>
+    <p>$(-)$. Nuevo intervalo: $[-1.7125, -1.709375]$.</p>
+
+    <p><strong>Iteración 7:</strong></p>
+    <p>$$ x_7 = \frac{-1.7125 + (-1.709375)}{2} = -1.7109375 $$</p>
+    <p>$$ Error = 0.09\% \quad | \quad f(-1.7109375) = -0.002 $$</p>
+    
+    <p><strong>Solución final:</strong> En la iteración 7, el error es mínimo. La raíz aproximada es $x = -1.7109375$.</p>
+</div>
+ </div>
+
+  <div class="ejercicio-bloque interactable">
+
+<!-- Ejercicio 5 -->
+<h3 class="ejercicio-titulo">Ejercicio 5</h3>
+<div class="ejercicio-contenido">
+    <p>Encontrar la raíz de la función en el intervalo $[0, 1]$ logrando un error porcentual $Ec < 1\%$ (comenzando con 4 iteraciones):</p>
+    <p>$$ f(x) = e^{3x} - 4 $$</p>
+    
+    <p><strong>Evaluación inicial:</strong> $a = 0$, $b = 1$. <br> 
+    $f(0) = e^0 - 4 = -3$ <br> 
+    $f(1) = e^3 - 4 \approx 16.085$ <br>
+    Hay cambio de signo, la raíz está en $[0, 1]$.</p>
+    
+    <p><strong>Iteración 1:</strong></p>
+    <p>$$ x_1 = \frac{0 + 1}{2} = 0.5 $$</p>
+    <p>$$ f(0.5) = e^{1.5} - 4 = 0.4816 $$</p>
+    <p>Como $f(x_1)$ es positivo, sustituye a $b$. El nuevo intervalo es $[0, 0.5]$.</p>
+
+    <p><strong>Iteración 2:</strong></p>
+    <p>$$ x_2 = \frac{0 + 0.5}{2} = 0.25 $$</p>
+    <p>$$ Error = \left| \frac{0.25 - 0.5}{0.25} \right| \times 100 = 100\% $$</p>
+    <p>$$ f(0.25) = e^{0.75} - 4 = -1.883 $$</p>
+    <p>Como $f(x_2)$ es negativo, sustituye a $a$. El nuevo intervalo es $[0.25, 0.5]$.</p>
+
+    <p><strong>Iteración 3:</strong></p>
+    <p>$$ x_3 = \frac{0.25 + 0.5}{2} = 0.375 $$</p>
+    <p>$$ Error = \left| \frac{0.375 - 0.25}{0.375} \right| \times 100 = 33.33\% $$</p>
+    <p>$$ f(0.375) = e^{1.125} - 4 = -0.919 $$</p>
+    <p>Como $f(x_3)$ es negativo, sustituye a $a$. El nuevo intervalo es $[0.375, 0.5]$.</p>
+
+    <p><strong>Iteración 4:</strong></p>
+    <p>$$ x_4 = \frac{0.375 + 0.5}{2} = 0.4375 $$</p>
+    <p>$$ Error = \left| \frac{0.4375 - 0.375}{0.4375} \right| \times 100 = 14.28\% $$</p>
+    <p>$$ f(0.4375) = e^{1.3125} - 4 = -0.2845 $$</p>
+    
+    <p><strong>Iteraciones 5 a 8 (Para alcanzar Ec < 1%):</strong><br>
+    Iteración 5: $x_5 = 0.46875$ ($Error = 6.66\%$)[cite: 6]<br>
+    Iteración 6: $x_6 = 0.453125$ ($Error = 3.44\%$)[cite: 6]<br>
+    Iteración 7: $x_7 = 0.4609375$ ($Error = 1.69\%$)[cite: 6]<br>
+    Iteración 8: $x_8 = 0.46484375$ ($Error = 0.84\%$)[cite: 6]</p>
+
+    <p><strong>Solución final:</strong> En la iteración 8 se cumple el objetivo con un error de $0.84\% < 1\%$. La raíz aproximada es $x = 0.46484375$[cite: 6].</p>
+</div>
+            </div>
+
+    <!-- Ejercicio 6 -->        
+    <div class="ejercicio-bloque interactable">
+    <h3 class="ejercicio-titulo">Ejercicio 6</h3>
+        <div class="ejercicio-contenido">
+            <p>Encontrar la raíz de la función en el intervalo $[1, 1.6]$ realizando $i = 8$ iteraciones:</p>
+    <p>$$ f(x) = 4x^2 - 5x $$[cite: 12]</p>
+    
+    <p><strong>Evaluación inicial:</strong> $a = 1$, $b = 1.6$[cite: 12]. <br> 
+    $f(1) = 4(1)^2 - 5(1) = -1$ <br> 
+    $f(1.6) = 4(1.6)^2 - 5(1.6) = 10.24 - 8 = 2.24$ <br>
+    Hay cambio de signo, la raíz está en $[1, 1.6]$.</p>
+    
+    <p><strong>Iteración 1:</strong></p>
+    <p>$$ x_1 = \frac{1 + 1.6}{2} = 1.3 $$</p>
+    <p>$$ f(1.3) = 4(1.3)^2 - 5(1.3) = 0.26 $$</p>
+    <p>Como $f(x_1)$ es positivo, sustituye a $b$. El nuevo intervalo es $[1, 1.3]$.</p>
+
+    <p><strong>Iteración 2:</strong></p>
+    <p>$$ x_2 = \frac{1 + 1.3}{2} = 1.15 $$</p>
+    <p>$$ Error = \left| \frac{1.15 - 1.3}{1.15} \right| \times 100 = 13.04\% \quad | \quad f(1.15) = -0.46 $$</p>
+    <p>$(-)$. Nuevo intervalo: $[1.15, 1.3]$.</p>
+
+    <p><strong>Iteración 3:</strong></p>
+    <p>$$ x_3 = \frac{1.15 + 1.3}{2} = 1.225 $$</p>
+    <p>$$ Error = \left| \frac{1.225 - 1.15}{1.225} \right| \times 100 = 6.12\% \quad | \quad f(1.225) = -0.1225 $$</p>
+    <p>$(-)$. Nuevo intervalo: $[1.225, 1.3]$.</p>
+
+    <p><strong>Iteración 4:</strong></p>
+    <p>$$ x_4 = \frac{1.225 + 1.3}{2} = 1.2625 $$</p>
+    <p>$$ Error = 2.97\% \quad | \quad f(1.2625) = 0.0631 $$</p>
+    <p>$(+)$. Nuevo intervalo: $[1.225, 1.2625]$.</p>
+
+    <p><strong>Iteración 5:</strong></p>
+    <p>$$ x_5 = \frac{1.225 + 1.2625}{2} = 1.24375 $$</p>
+    <p>$$ Error = 1.50\% \quad | \quad f(1.24375) = -0.0311 $$</p>
+    <p>$(-)$. Nuevo intervalo: $[1.24375, 1.2625]$.</p>
+
+    <p><strong>Iteración 6:</strong></p>
+    <p>$$ x_6 = \frac{1.24375 + 1.2625}{2} = 1.253125 $$</p>
+    <p>$$ Error = 0.74\% \quad | \quad f(1.253125) = 0.0156 $$</p>
+    <p>$(+)$. Nuevo intervalo: $[1.24375, 1.253125]$.</p>
+
+    <p><strong>Iteración 7:</strong></p>
+    <p>$$ x_7 = \frac{1.24375 + 1.253125}{2} = 1.2484375 $$</p>
+    <p>$$ Error = 0.37\% \quad | \quad f(1.2484375) = -0.0078 $$</p>
+    <p>$(-)$. Nuevo intervalo: $[1.2484375, 1.253125]$.</p>
+
+    <p><strong>Iteración 8:</strong></p>
+    <p>$$ x_8 = \frac{1.2484375 + 1.253125}{2} = 1.25078125 $$</p>
+    <p>$$ Error = 0.18\% \quad | \quad f(1.25078125) = 0.0039 $$</p>
+    
+    <p><strong>Solución final:</strong> Tras completarse las 8 iteraciones requeridas, la raíz aproximada es $x = 1.25078125$. (La raíz exacta real es $1.25$).</p>
+        </div>
+    </div>
+
+    <!-- Ejercicio 7 -->        
+    <div class="ejercicio-bloque interactable">
+    <h3 class="ejercicio-titulo">Ejercicio 7</h3>
+        <div class="ejercicio-contenido">
+            <p>Encontrar la raíz de la función en el intervalo $[0, 1]$ hasta alcanzar una tolerancia $E_a \le 1\%$:</p>
+    <p>$$ f(x) = x^4 + 3x^3 - 2 $$</p>
+    
+    <p><strong>Evaluación inicial:</strong> $a = 0$, $b = 1$. <br> 
+    $f(0) = (0)^4 + 3(0)^3 - 2 = -2$ <br> 
+    $f(1) = (1)^4 + 3(1)^3 - 2 = 2$ <br>
+    Hay cambio de signo, la raíz está en $[0, 1]$.</p>
+    
+    <p><strong>Iteración 1:</strong></p>
+    <p>$$ x_1 = \frac{0 + 1}{2} = 0.5 $$</p>
+    <p>$$ f(0.5) = (0.5)^4 + 3(0.5)^3 - 2 = -1.5625 $$</p>
+    <p>$(-)$. Nuevo intervalo: $[0.5, 1]$.</p>
+
+    <p><strong>Iteración 2:</strong></p>
+    <p>$$ x_2 = \frac{0.5 + 1}{2} = 0.75 $$</p>
+    <p>$$ Error = 33.33\% \quad | \quad f(0.75) = -0.4179 $$</p>
+    <p>$(-)$. Nuevo intervalo: $[0.75, 1]$.</p>
+
+    <p><strong>Iteración 3:</strong></p>
+    <p>$$ x_3 = \frac{0.75 + 1}{2} = 0.875 $$</p>
+    <p>$$ Error = 14.28\% \quad | \quad f(0.875) = 0.5957 $$</p>
+    <p>$(+)$. Nuevo intervalo: $[0.75, 0.875]$.</p>
+
+    <p><strong>Iteración 4:</strong></p>
+    <p>$$ x_4 = \frac{0.75 + 0.875}{2} = 0.8125 $$</p>
+    <p>$$ Error = 7.69\% \quad | \quad f(0.8125) = 0.0451 $$</p>
+    <p>$(+)$. Nuevo intervalo: $[0.75, 0.8125]$.</p>
+
+    <p><strong>Iteración 5:</strong></p>
+    <p>$$ x_5 = \frac{0.75 + 0.8125}{2} = 0.78125 $$</p>
+    <p>$$ Error = 4.00\% \quad | \quad f(0.78125) = -0.1969 $$</p>
+    <p>$(-)$. Nuevo intervalo: $[0.78125, 0.8125]$.</p>
+
+    <p><strong>Iteración 6:</strong></p>
+    <p>$$ x_6 = \frac{0.78125 + 0.8125}{2} = 0.796875 $$</p>
+    <p>$$ Error = 1.96\% \quad | \quad f(0.796875) = -0.0784 $$</p>
+    <p>$(-)$. Nuevo intervalo: $[0.796875, 0.8125]$.</p>
+
+    <p><strong>Iteración 7:</strong></p>
+    <p>$$ x_7 = \frac{0.796875 + 0.8125}{2} = 0.8046875 $$</p>
+    <p>$$ Error = \left| \frac{0.8046875 - 0.796875}{0.8046875} \right| \times 100 = 0.97\% \quad | \quad f(0.8046875) = -0.0172 $$</p>
+    
+    <p><strong>Solución final:</strong> En la iteración 7, el error relativo porcentual es de $0.97\%$, cumpliendo con la tolerancia estipulada de $E_a \le 1\%$. La raíz aproximada es $x \approx 0.8046875$.</p>
+        </div>
+    </div>
+
+    <!-- Ejercicio 8 -->        
+    <div class="ejercicio-bloque interactable">
+    <h3 class="ejercicio-titulo">Ejercicio 8</h3>
+        <div class="ejercicio-contenido">
+            <p>Encontrar la raíz de la función en el intervalo $[8, 9]$:</p>
+    <p>$$ f(x) = x^2 - 78.8 $$</p>
+    
+    <p><strong>Evaluación inicial:</strong> $a = 8$, $b = 9$. <br> 
+    $f(8) = (8)^2 - 78.8 = 64 - 78.8 = -14.8$ <br> 
+    $f(9) = (9)^2 - 78.8 = 81 - 78.8 = 2.2$ <br>
+    Hay cambio de signo, la raíz está en $[8, 9]$.</p>
+
+    <p><em>(Al no indicarse el número de iteraciones o la tolerancia en el enunciado original, se muestran las primeras 5 iteraciones como demostración del procedimiento).</em></p>
+    
+    <p><strong>Iteración 1:</strong></p>
+    <p>$$ x_1 = \frac{8 + 9}{2} = 8.5 $$</p>
+    <p>$$ f(8.5) = (8.5)^2 - 78.8 = 72.25 - 78.8 = -6.55 $$</p>
+    <p>$(-)$. Nuevo intervalo: $[8.5, 9]$.</p>
+
+    <p><strong>Iteración 2:</strong></p>
+    <p>$$ x_2 = \frac{8.5 + 9}{2} = 8.75 $$</p>
+    <p>$$ Error = 2.85\% \quad | \quad f(8.75) = -2.2375 $$</p>
+    <p>$(-)$. Nuevo intervalo: $[8.75, 9]$.</p>
+
+    <p><strong>Iteración 3:</strong></p>
+    <p>$$ x_3 = \frac{8.75 + 9}{2} = 8.875 $$</p>
+    <p>$$ Error = 1.40\% \quad | \quad f(8.875) = -0.0343 $$</p>
+    <p>$(-)$. Nuevo intervalo: $[8.875, 9]$.</p>
+
+    <p><strong>Iteración 4:</strong></p>
+    <p>$$ x_4 = \frac{8.875 + 9}{2} = 8.9375 $$</p>
+    <p>$$ Error = 0.70\% \quad | \quad f(8.9375) = 1.0789 $$</p>
+    <p>$(+)$. Nuevo intervalo: $[8.875, 8.9375]$.</p>
+
+    <p><strong>Iteración 5:</strong></p>
+    <p>$$ x_5 = \frac{8.875 + 8.9375}{2} = 8.90625 $$</p>
+    <p>$$ Error = 0.35\% \quad | \quad f(8.90625) = 0.5215 $$</p>
+    
+    <p><strong>Solución final:</strong> Tras 5 iteraciones, la raíz aproximada se ubica en $x \approx 8.90625$. (Evaluando la raíz cuadrada real, el valor exacto es $\sqrt{78.8} \approx 8.87693$).</p>
+        </div>
+    </div>
+
+    <!-- Ejercicio 9 -->        
+    <div class="ejercicio-bloque interactable">
+<h3 class="ejercicio-titulo">Ejercicio 9</h3>
+<div class="ejercicio-contenido">
+    <p>Utilice el método de bisección para determinar el coeficiente de arrastre $c$.</p>
+    <p><strong>Datos iniciales:</strong> $a = 9.81\text{ m/s}^2$, $m = 68.1\text{ kg}$, $t = 10\text{ s}$, $v = 40\text{ m/s}$. Tolerancia del $1\%$ en el intervalo $[10, 15]$.</p>
+    <p>$$ f(c) = \frac{am}{c} \left(1 - e^{-\frac{ct}{m}}\right) - v $$</p>
+    
+    <p><strong>Sustitución en la función:</strong></p>
+    <p>$$ f(c) = \frac{(9.81)(68.1)}{c} \left(1 - e^{-\frac{10c}{68.1}}\right) - 40 $$</p>
+    <p>$$ f(c) = \frac{668.061}{c} \left(1 - e^{-0.14684c}\right) - 40 $$</p>
+
+    <p><strong>Evaluación inicial:</strong> $c_i = 10$, $c_f = 15$. <br> 
+    $f(10) = 11.421$ <br> 
+    $f(15) = -0.385$ <br>
+    Hay cambio de signo, la raíz está en $[10, 15]$.</p>
+    
+    <p><strong>Iteración 1:</strong></p>
+    <p>$$ c_1 = \frac{10 + 15}{2} = 12.5 $$</p>
+    <p>$$ f(12.5) = 4.918 $$</p>
+    <p>Como $f(c_1)$ es positivo, sustituye a $c_i$. El nuevo intervalo es $[12.5, 15]$.</p>
+
+    <p><strong>Iteración 2:</strong></p>
+    <p>$$ c_2 = \frac{12.5 + 15}{2} = 13.75 $$</p>
+    <p>$$ Error = \left| \frac{13.75 - 12.5}{13.75} \right| \times 100 = 9.09\% \quad | \quad f(13.75) = 2.135 $$</p>
+    <p>Como $f(c_2)$ es positivo, sustituye a $c_i$. El nuevo intervalo es $[13.75, 15]$.</p>
+
+    <p><strong>Iteración 3:</strong></p>
+    <p>$$ c_3 = \frac{13.75 + 15}{2} = 14.375 $$</p>
+    <p>$$ Error = \left| \frac{14.375 - 13.75}{14.375} \right| \times 100 = 4.35\% \quad | \quad f(14.375) = 0.844 $$</p>
+    <p>Como $f(c_3)$ es positivo, sustituye a $c_i$. El nuevo intervalo es $[14.375, 15]$.</p>
+
+    <p><strong>Iteración 4:</strong></p>
+    <p>$$ c_4 = \frac{14.375 + 15}{2} = 14.6875 $$</p>
+    <p>$$ Error = \left| \frac{14.6875 - 14.375}{14.6875} \right| \times 100 = 2.13\% \quad | \quad f(14.6875) = 0.222 $$</p>
+    <p>Como $f(c_4)$ es positivo, sustituye a $c_i$. El nuevo intervalo es $[14.6875, 15]$.</p>
+
+    <p><strong>Iteración 5:</strong></p>
+    <p>$$ c_5 = \frac{14.6875 + 15}{2} = 14.84375 $$</p>
+    <p>$$ Error = \left| \frac{14.84375 - 14.6875}{14.84375} \right| \times 100 = 1.05\% \quad | \quad f(14.84375) = -0.083 $$</p>
+    <p>Como $f(c_5)$ es negativo, sustituye a $c_f$. El nuevo intervalo es $[14.6875, 14.84375]$.</p>
+
+    <p><strong>Iteración 6:</strong></p>
+    <p>$$ c_6 = \frac{14.6875 + 14.84375}{2} = 14.765625 $$</p>
+    <p>$$ Error = \left| \frac{14.765625 - 14.84375}{14.765625} \right| \times 100 = 0.53\% \quad | \quad f(14.765625) = 0.070 $$</p>
+    
+    <p><strong>Solución final:</strong> En la iteración 6, el error porcentual alcanza el $0.53\%$, el cual cumple con la condición de ser menor al $1\%$ permitido. El coeficiente de arrastre aproximado es $c \approx 14.7656$.</p>
+</div>
+    </div>
+
+    <!-- Ejercicio 10 -->        
+    <div class="ejercicio-bloque interactable">
+<!-- Ejercicio 10 -->
+<h3 class="ejercicio-titulo">Ejercicio 10</h3>
+<div class="ejercicio-contenido">
+    <p>La ecuación de Manning se utiliza para calcular la profundidad de un canal rectangular abierto, tomando en consideración los siguientes datos. Se requiere encontrar la profundidad $H$ planteando la función $f(H) = 0$.</p>
+    
+    <p><strong>Datos iniciales:</strong></p>
+    <ul>
+        <li>Caudal $Q = 60\text{ m}^3\text{/s}$</li>
+        <li>Pendiente $S = 0.0002\text{ m/m}$</li>
+        <li>Ancho de canal $B = 15\text{ m}$</li>
+        <li>Coeficiente de rugosidad $n = 0.04$</li>
+        <li>Iteraciones $i = 7$</li>
+        <li>Intervalo de búsqueda: $[0, 20]$</li>
+    </ul>
+
+    <p><strong>Ecuación de Manning:</strong></p>
+    <p>$$ Q = \frac{\sqrt{S} (BH)^{5/3}}{n(B + 2H)^{2/3}} $$</p>
+    
+    <p><strong>Sustitución en la función $f(H)$:</strong></p>
+    <p>$$ f(H) = \frac{\sqrt{0.0002} \cdot (15H)^{5/3}}{0.04 \cdot (15 + 2H)^{2/3}} - 60 $$</p>
+    <p>$$ f(H) \approx 0.35355 \frac{(15H)^{5/3}}{(15 + 2H)^{2/3}} - 60 $$</p>
+
+    <p><strong>Evaluación inicial:</strong> $H_i = 0$, $H_f = 20$. <br> 
+    $f(0) = -60$ <br> 
+    $f(20) \approx 268.18$ <br>
+    Hay cambio de signo, la raíz está en el intervalo $[0, 20]$.</p>
+    
+    <p><strong>Iteración 1:</strong></p>
+    <p>$$ H_1 = \frac{0 + 20}{2} = 10 $$</p>
+    <p>$$ f(10) \approx 79.94 $$</p>
+    <p>Como $f(H_1)$ es positivo, sustituye a $H_f$. El nuevo intervalo es $[0, 10]$.</p>
+
+    <p><strong>Iteración 2:</strong></p>
+    <p>$$ H_2 = \frac{0 + 10}{2} = 5 $$</p>
+    <p>$$ Error = \left| \frac{5 - 10}{5} \right| \times 100 = 100\% \quad | \quad f(5) \approx -4.81 $$</p>
+    <p>Como $f(H_2)$ es negativo, sustituye a $H_i$. El nuevo intervalo es $[5, 10]$.</p>
+
+    <p><strong>Iteración 3:</strong></p>
+    <p>$$ H_3 = \frac{5 + 10}{2} = 7.5 $$</p>
+    <p>$$ Error = \left| \frac{7.5 - 5}{7.5} \right| \times 100 = 33.33\% \quad | \quad f(7.5) \approx 36.22 $$</p>
+    <p>Como $f(H_3)$ es positivo, sustituye a $H_f$. El nuevo intervalo es $[5, 7.5]$.</p>
+
+    <p><strong>Iteración 4:</strong></p>
+    <p>$$ H_4 = \frac{5 + 7.5}{2} = 6.25 $$</p>
+    <p>$$ Error = \left| \frac{6.25 - 7.5}{6.25} \right| \times 100 = 20\% \quad | \quad f(6.25) \approx 14.85 $$</p>
+    <p>Como $f(H_4)$ es positivo, sustituye a $H_f$. El nuevo intervalo es $[5, 6.25]$.</p>
+
+    <p><strong>Iteración 5:</strong></p>
+    <p>$$ H_5 = \frac{5 + 6.25}{2} = 5.625 $$</p>
+    <p>$$ Error = \left| \frac{5.625 - 6.25}{5.625} \right| \times 100 = 11.11\% \quad | \quad f(5.625) \approx 4.78 $$</p>
+    <p>Como $f(H_5)$ es positivo, sustituye a $H_f$. El nuevo intervalo es $[5, 5.625]$.</p>
+
+    <p><strong>Iteración 6:</strong></p>
+    <p>$$ H_6 = \frac{5 + 5.625}{2} = 5.3125 $$</p>
+    <p>$$ Error = \left| \frac{5.3125 - 5.625}{5.3125} \right| \times 100 = 5.88\% \quad | \quad f(5.3125) \approx -0.12 $$</p>
+    <p>Como $f(H_6)$ es negativo, sustituye a $H_i$. El nuevo intervalo es $[5.3125, 5.625]$.</p>
+
+    <p><strong>Iteración 7:</strong></p>
+    <p>$$ H_7 = \frac{5.3125 + 5.625}{2} = 5.46875 $$</p>
+    <p>$$ Error = \left| \frac{5.46875 - 5.3125}{5.46875} \right| \times 100 = 2.85\% \quad | \quad f(5.46875) \approx 2.31 $$</p>
+
+    <p><strong>Solución final:</strong> Tras completarse las 7 iteraciones solicitadas, la profundidad aproximada del canal es $H \approx 5.46875\text{ m}$.</p>
+</div>
+    </div>
 
         {% endif %}
     </div>
